@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LivraisonOeufsCreateDlg" widgetVar="LivraisonOeufsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLivraisonOeufsTitle}">
+            <h:form id="LivraisonOeufsCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{livraisonOeufsController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLivraisonOeufsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{livraisonOeufsController.selected.id}" title="#{bundle.CreateLivraisonOeufsTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateLivraisonOeufsLabel_dateLivraison}" for="dateLivraison" />
+                        <p:calendar id="dateLivraison" pattern="MM/dd/yyyy HH:mm:ss" value="#{livraisonOeufsController.selected.dateLivraison}" title="#{bundle.EditLivraisonOeufsTitle_dateLivraison}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateLivraisonOeufsLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{livraisonOeufsController.selected.total}" title="#{bundle.CreateLivraisonOeufsTitle_total}" />
+                        <p:outputLabel value="#{bundle.CreateLivraisonOeufsLabel_responsable}" for="responsable" />
+                        <p:selectOneMenu id="responsable" value="#{livraisonOeufsController.selected.responsable}" >
+                            <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
+                                           var="responsableItem"
+                                           itemValue="#{responsableItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLivraisonOeufsLabel_demandeOeufs}" for="demandeOeufs" />
+                        <p:selectOneMenu id="demandeOeufs" value="#{livraisonOeufsController.selected.demandeOeufs}" >
+                            <f:selectItems value="#{demandeOeufsController.itemsAvailableSelectOne}"
+                                           var="demandeOeufsItem"
+                                           itemValue="#{demandeOeufsItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLivraisonOeufsLabel_qte}" for="qte" />
+                        <p:inputText id="qte" value="#{livraisonOeufsController.selected.qte}" title="#{bundle.CreateLivraisonOeufsTitle_qte}" />
+                        <p:outputLabel value="#{bundle.CreateLivraisonOeufsLabel_client}" for="client" />
+                        <p:selectOneMenu id="client" value="#{livraisonOeufsController.selected.client}" >
+                            <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
+                                           var="clientItem"
+                                           itemValue="#{clientItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{livraisonOeufsController.create}" value="#{bundle.Save}" update="display,:LivraisonOeufsListForm:datalist,:growl" oncomplete="handleSubmit(args,'LivraisonOeufsCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LivraisonOeufsCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

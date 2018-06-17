@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductionPoussinEditDlg" widgetVar="ProductionPoussinEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProductionPoussinTitle}">
+            <h:form id="ProductionPoussinEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productionPoussinController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProductionPoussinLabel_qteTotal}" for="qteTotal" />
+                        <p:inputText id="qteTotal" value="#{productionPoussinController.selected.qteTotal}" title="#{bundle.EditProductionPoussinTitle_qteTotal}" />
+                        <p:outputLabel value="#{bundle.EditProductionPoussinLabel_ferme}" for="ferme" />
+                        <p:selectOneMenu id="ferme" value="#{productionPoussinController.selected.ferme}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeItem"
+                                           itemValue="#{fermeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductionPoussinLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{productionPoussinController.selected.id}" title="#{bundle.EditProductionPoussinTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditProductionPoussinLabel_dateEntreePoussin}" for="dateEntreePoussin" />
+                        <p:calendar id="dateEntreePoussin" pattern="MM/dd/yyyy" value="#{productionPoussinController.selected.dateEntreePoussin}" title="#{bundle.EditProductionPoussinTitle_dateEntreePoussin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditProductionPoussinLabel_numSemaine}" for="numSemaine" />
+                        <p:inputText id="numSemaine" value="#{productionPoussinController.selected.numSemaine}" title="#{bundle.EditProductionPoussinTitle_numSemaine}" />
+                        <p:outputLabel value="#{bundle.EditProductionPoussinLabel_annee}" for="annee" />
+                        <p:inputText id="annee" value="#{productionPoussinController.selected.annee}" title="#{bundle.EditProductionPoussinTitle_annee}" />
+                        <p:outputLabel value="#{bundle.EditProductionPoussinLabel_qteFemale}" for="qteFemale" />
+                        <p:inputText id="qteFemale" value="#{productionPoussinController.selected.qteFemale}" title="#{bundle.EditProductionPoussinTitle_qteFemale}" />
+                        <p:outputLabel value="#{bundle.EditProductionPoussinLabel_qteMale}" for="qteMale" />
+                        <p:inputText id="qteMale" value="#{productionPoussinController.selected.qteMale}" title="#{bundle.EditProductionPoussinTitle_qteMale}" />
+                        <p:outputLabel value="#{bundle.EditProductionPoussinLabel_eclosion}" for="eclosion" />
+                        <p:selectOneMenu id="eclosion" value="#{productionPoussinController.selected.eclosion}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{eclosionController.itemsAvailableSelectOne}"
+                                           var="eclosionItem"
+                                           itemValue="#{eclosionItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productionPoussinController.update}" value="#{bundle.Save}" update="display,:ProductionPoussinListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProductionPoussinEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProductionPoussinEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

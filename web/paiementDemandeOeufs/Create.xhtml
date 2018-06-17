@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PaiementDemandeOeufsCreateDlg" widgetVar="PaiementDemandeOeufsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePaiementDemandeOeufsTitle}">
+            <h:form id="PaiementDemandeOeufsCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{paiementDemandeOeufsController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePaiementDemandeOeufsLabel_demandeOeufs}" for="demandeOeufs" />
+                        <p:selectOneMenu id="demandeOeufs" value="#{paiementDemandeOeufsController.selected.demandeOeufs}" >
+                            <f:selectItems value="#{demandeOeufsController.itemsAvailableSelectOne}"
+                                           var="demandeOeufsItem"
+                                           itemValue="#{demandeOeufsItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePaiementDemandeOeufsLabel_paiement}" for="paiement" />
+                        <p:selectOneMenu id="paiement" value="#{paiementDemandeOeufsController.selected.paiement}" >
+                            <f:selectItems value="#{paiementController.itemsAvailableSelectOne}"
+                                           var="paiementItem"
+                                           itemValue="#{paiementItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePaiementDemandeOeufsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{paiementDemandeOeufsController.selected.id}" title="#{bundle.CreatePaiementDemandeOeufsTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{paiementDemandeOeufsController.create}" value="#{bundle.Save}" update="display,:PaiementDemandeOeufsListForm:datalist,:growl" oncomplete="handleSubmit(args,'PaiementDemandeOeufsCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PaiementDemandeOeufsCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

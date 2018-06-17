@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductionPoussinViewDlg" widgetVar="ProductionPoussinViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProductionPoussinTitle}">
+            <h:form id="ProductionPoussinViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productionPoussinController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProductionPoussinLabel_qteTotal}"/>
+                        <h:outputText value="#{productionPoussinController.selected.qteTotal}" title="#{bundle.ViewProductionPoussinTitle_qteTotal}"/>
+                        <h:outputText value="#{bundle.ViewProductionPoussinLabel_ferme}"/>
+                        <h:outputText value="#{productionPoussinController.selected.ferme}" title="#{bundle.ViewProductionPoussinTitle_ferme}"/>
+                        <h:outputText value="#{bundle.ViewProductionPoussinLabel_id}"/>
+                        <h:outputText value="#{productionPoussinController.selected.id}" title="#{bundle.ViewProductionPoussinTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewProductionPoussinLabel_dateEntreePoussin}"/>
+                        <h:outputText value="#{productionPoussinController.selected.dateEntreePoussin}" title="#{bundle.ViewProductionPoussinTitle_dateEntreePoussin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProductionPoussinLabel_numSemaine}"/>
+                        <h:outputText value="#{productionPoussinController.selected.numSemaine}" title="#{bundle.ViewProductionPoussinTitle_numSemaine}"/>
+                        <h:outputText value="#{bundle.ViewProductionPoussinLabel_annee}"/>
+                        <h:outputText value="#{productionPoussinController.selected.annee}" title="#{bundle.ViewProductionPoussinTitle_annee}"/>
+                        <h:outputText value="#{bundle.ViewProductionPoussinLabel_qteFemale}"/>
+                        <h:outputText value="#{productionPoussinController.selected.qteFemale}" title="#{bundle.ViewProductionPoussinTitle_qteFemale}"/>
+                        <h:outputText value="#{bundle.ViewProductionPoussinLabel_qteMale}"/>
+                        <h:outputText value="#{productionPoussinController.selected.qteMale}" title="#{bundle.ViewProductionPoussinTitle_qteMale}"/>
+                        <h:outputText value="#{bundle.ViewProductionPoussinLabel_eclosion}"/>
+                        <h:outputText value="#{productionPoussinController.selected.eclosion}" title="#{bundle.ViewProductionPoussinTitle_eclosion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProductionPoussinViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

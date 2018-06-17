@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DemandePoulesCreateDlg" widgetVar="DemandePoulesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDemandePoulesTitle}">
+            <h:form id="DemandePoulesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{demandePoulesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_qteTotal}" for="qteTotal" />
+                        <p:inputText id="qteTotal" value="#{demandePoulesController.selected.qteTotal}" title="#{bundle.CreateDemandePoulesTitle_qteTotal}" />
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_qteMaleLivree}" for="qteMaleLivree" />
+                        <p:inputText id="qteMaleLivree" value="#{demandePoulesController.selected.qteMaleLivree}" title="#{bundle.CreateDemandePoulesTitle_qteMaleLivree}" />
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_qteFemaleLivree}" for="qteFemaleLivree" />
+                        <p:inputText id="qteFemaleLivree" value="#{demandePoulesController.selected.qteFemaleLivree}" title="#{bundle.CreateDemandePoulesTitle_qteFemaleLivree}" />
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_totalPaye}" for="totalPaye" />
+                        <p:inputText id="totalPaye" value="#{demandePoulesController.selected.totalPaye}" title="#{bundle.CreateDemandePoulesTitle_totalPaye}" />
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_qteMale}" for="qteMale" />
+                        <p:inputText id="qteMale" value="#{demandePoulesController.selected.qteMale}" title="#{bundle.CreateDemandePoulesTitle_qteMale}" />
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_qteFemale}" for="qteFemale" />
+                        <p:inputText id="qteFemale" value="#{demandePoulesController.selected.qteFemale}" title="#{bundle.CreateDemandePoulesTitle_qteFemale}" />
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{demandePoulesController.selected.id}" title="#{bundle.CreateDemandePoulesTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_etatPaiement}" for="etatPaiement" />
+                        <p:inputText id="etatPaiement" value="#{demandePoulesController.selected.etatPaiement}" title="#{bundle.CreateDemandePoulesTitle_etatPaiement}" />
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_dateDemande}" for="dateDemande" />
+                        <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandePoulesController.selected.dateDemande}" title="#{bundle.EditDemandePoulesTitle_dateDemande}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_montantTotal}" for="montantTotal" />
+                        <p:inputText id="montantTotal" value="#{demandePoulesController.selected.montantTotal}" title="#{bundle.CreateDemandePoulesTitle_montantTotal}" />
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_client}" for="client" />
+                        <p:selectOneMenu id="client" value="#{demandePoulesController.selected.client}" >
+                            <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
+                                           var="clientItem"
+                                           itemValue="#{clientItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_responsable}" for="responsable" />
+                        <p:selectOneMenu id="responsable" value="#{demandePoulesController.selected.responsable}" >
+                            <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
+                                           var="responsableItem"
+                                           itemValue="#{responsableItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_etatLivraison}" for="etatLivraison" />
+                        <p:inputText id="etatLivraison" value="#{demandePoulesController.selected.etatLivraison}" title="#{bundle.CreateDemandePoulesTitle_etatLivraison}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{demandePoulesController.create}" value="#{bundle.Save}" update="display,:DemandePoulesListForm:datalist,:growl" oncomplete="handleSubmit(args,'DemandePoulesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DemandePoulesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

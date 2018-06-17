@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstimationOeufCreateDlg" widgetVar="EstimationOeufCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEstimationOeufTitle}">
+            <h:form id="EstimationOeufCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estimationOeufController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEstimationOeufLabel_responsable}" for="responsable" />
+                        <p:selectOneMenu id="responsable" value="#{estimationOeufController.selected.responsable}" >
+                            <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
+                                           var="responsableItem"
+                                           itemValue="#{responsableItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEstimationOeufLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{estimationOeufController.selected.description}" title="#{bundle.CreateEstimationOeufTitle_description}" />
+                        <p:outputLabel value="#{bundle.CreateEstimationOeufLabel_dateEstimation}" for="dateEstimation" />
+                        <p:calendar id="dateEstimation" pattern="MM/dd/yyyy" value="#{estimationOeufController.selected.dateEstimation}" title="#{bundle.EditEstimationOeufTitle_dateEstimation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEstimationOeufLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{estimationOeufController.selected.id}" title="#{bundle.CreateEstimationOeufTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{estimationOeufController.create}" value="#{bundle.Save}" update="display,:EstimationOeufListForm:datalist,:growl" oncomplete="handleSubmit(args,'EstimationOeufCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EstimationOeufCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SuivisJournalierViewDlg" widgetVar="SuivisJournalierViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSuivisJournalierTitle}">
+            <h:form id="SuivisJournalierViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{suivisJournalierController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_poids}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.poids}" title="#{bundle.ViewSuivisJournalierTitle_poids}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_id}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.id}" title="#{bundle.ViewSuivisJournalierTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_dateSuivis}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.dateSuivis}" title="#{bundle.ViewSuivisJournalierTitle_dateSuivis}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_semaine}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.semaine}" title="#{bundle.ViewSuivisJournalierTitle_semaine}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_numSemaine}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.numSemaine}" title="#{bundle.ViewSuivisJournalierTitle_numSemaine}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_annee}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.annee}" title="#{bundle.ViewSuivisJournalierTitle_annee}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_ferme}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.ferme}" title="#{bundle.ViewSuivisJournalierTitle_ferme}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_suivisPoussinFemale}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.suivisPoussinFemale}" title="#{bundle.ViewSuivisJournalierTitle_suivisPoussinFemale}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_suivisPoussinMale}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.suivisPoussinMale}" title="#{bundle.ViewSuivisJournalierTitle_suivisPoussinMale}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_alimentsMale}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.alimentsMale}" title="#{bundle.ViewSuivisJournalierTitle_alimentsMale}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_alimentsFemale}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.alimentsFemale}" title="#{bundle.ViewSuivisJournalierTitle_alimentsFemale}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_production}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.production}" title="#{bundle.ViewSuivisJournalierTitle_production}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_totalConsommationAliments}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.totalConsommationAliments}" title="#{bundle.ViewSuivisJournalierTitle_totalConsommationAliments}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_medicamentsMale}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.medicamentsMale}" title="#{bundle.ViewSuivisJournalierTitle_medicamentsMale}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_medicamentsFemale}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.medicamentsFemale}" title="#{bundle.ViewSuivisJournalierTitle_medicamentsFemale}"/>
+                        <h:outputText value="#{bundle.ViewSuivisJournalierLabel_totalConsommationMedicaments}"/>
+                        <h:outputText value="#{suivisJournalierController.selected.totalConsommationMedicaments}" title="#{bundle.ViewSuivisJournalierTitle_totalConsommationMedicaments}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SuivisJournalierViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

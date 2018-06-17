@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SuivisJournalierCreateDlg" widgetVar="SuivisJournalierCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSuivisJournalierTitle}">
+            <h:form id="SuivisJournalierCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{suivisJournalierController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_poids}" for="poids" />
+                        <p:inputText id="poids" value="#{suivisJournalierController.selected.poids}" title="#{bundle.CreateSuivisJournalierTitle_poids}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{suivisJournalierController.selected.id}" title="#{bundle.CreateSuivisJournalierTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_dateSuivis}" for="dateSuivis" />
+                        <p:calendar id="dateSuivis" pattern="MM/dd/yyyy" value="#{suivisJournalierController.selected.dateSuivis}" title="#{bundle.EditSuivisJournalierTitle_dateSuivis}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_semaine}" for="semaine" />
+                        <p:inputText id="semaine" value="#{suivisJournalierController.selected.semaine}" title="#{bundle.CreateSuivisJournalierTitle_semaine}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_numSemaine}" for="numSemaine" />
+                        <p:inputText id="numSemaine" value="#{suivisJournalierController.selected.numSemaine}" title="#{bundle.CreateSuivisJournalierTitle_numSemaine}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_annee}" for="annee" />
+                        <p:inputText id="annee" value="#{suivisJournalierController.selected.annee}" title="#{bundle.CreateSuivisJournalierTitle_annee}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_ferme}" for="ferme" />
+                        <p:selectOneMenu id="ferme" value="#{suivisJournalierController.selected.ferme}" >
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeItem"
+                                           itemValue="#{fermeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_suivisPoussinFemale}" for="suivisPoussinFemale" />
+                        <p:selectOneMenu id="suivisPoussinFemale" value="#{suivisJournalierController.selected.suivisPoussinFemale}" >
+                            <f:selectItems value="#{suivisPoussinParGenderController.itemsAvailableSelectOne}"
+                                           var="suivisPoussinFemaleItem"
+                                           itemValue="#{suivisPoussinFemaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_suivisPoussinMale}" for="suivisPoussinMale" />
+                        <p:selectOneMenu id="suivisPoussinMale" value="#{suivisJournalierController.selected.suivisPoussinMale}" >
+                            <f:selectItems value="#{suivisPoussinParGenderController.itemsAvailableSelectOne}"
+                                           var="suivisPoussinMaleItem"
+                                           itemValue="#{suivisPoussinMaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_alimentsMale}" for="alimentsMale" />
+                        <p:selectOneMenu id="alimentsMale" value="#{suivisJournalierController.selected.alimentsMale}" >
+                            <f:selectItems value="#{alimentsParGenderController.itemsAvailableSelectOne}"
+                                           var="alimentsMaleItem"
+                                           itemValue="#{alimentsMaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_alimentsFemale}" for="alimentsFemale" />
+                        <p:selectOneMenu id="alimentsFemale" value="#{suivisJournalierController.selected.alimentsFemale}" >
+                            <f:selectItems value="#{alimentsParGenderController.itemsAvailableSelectOne}"
+                                           var="alimentsFemaleItem"
+                                           itemValue="#{alimentsFemaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_production}" for="production" />
+                        <p:inputText id="production" value="#{suivisJournalierController.selected.production}" title="#{bundle.CreateSuivisJournalierTitle_production}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_totalConsommationAliments}" for="totalConsommationAliments" />
+                        <p:inputText id="totalConsommationAliments" value="#{suivisJournalierController.selected.totalConsommationAliments}" title="#{bundle.CreateSuivisJournalierTitle_totalConsommationAliments}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_medicamentsMale}" for="medicamentsMale" />
+                        <p:selectOneMenu id="medicamentsMale" value="#{suivisJournalierController.selected.medicamentsMale}" >
+                            <f:selectItems value="#{medicamentsParGenderController.itemsAvailableSelectOne}"
+                                           var="medicamentsMaleItem"
+                                           itemValue="#{medicamentsMaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_medicamentsFemale}" for="medicamentsFemale" />
+                        <p:selectOneMenu id="medicamentsFemale" value="#{suivisJournalierController.selected.medicamentsFemale}" >
+                            <f:selectItems value="#{medicamentsParGenderController.itemsAvailableSelectOne}"
+                                           var="medicamentsFemaleItem"
+                                           itemValue="#{medicamentsFemaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSuivisJournalierLabel_totalConsommationMedicaments}" for="totalConsommationMedicaments" />
+                        <p:inputText id="totalConsommationMedicaments" value="#{suivisJournalierController.selected.totalConsommationMedicaments}" title="#{bundle.CreateSuivisJournalierTitle_totalConsommationMedicaments}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{suivisJournalierController.create}" value="#{bundle.Save}" update="display,:SuivisJournalierListForm:datalist,:growl" oncomplete="handleSubmit(args,'SuivisJournalierCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SuivisJournalierCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

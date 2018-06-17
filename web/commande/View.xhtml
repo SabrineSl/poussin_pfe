@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CommandeViewDlg" widgetVar="CommandeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCommandeTitle}">
+            <h:form id="CommandeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{commandeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCommandeLabel_estimationPoids}"/>
+                        <h:outputText value="#{commandeController.selected.estimationPoids}" title="#{bundle.ViewCommandeTitle_estimationPoids}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_qteTotal}"/>
+                        <h:outputText value="#{commandeController.selected.qteTotal}" title="#{bundle.ViewCommandeTitle_qteTotal}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_qteMaleReception}"/>
+                        <h:outputText value="#{commandeController.selected.qteMaleReception}" title="#{bundle.ViewCommandeTitle_qteMaleReception}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_qteFemaleReception}"/>
+                        <h:outputText value="#{commandeController.selected.qteFemaleReception}" title="#{bundle.ViewCommandeTitle_qteFemaleReception}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_totalPaye}"/>
+                        <h:outputText value="#{commandeController.selected.totalPaye}" title="#{bundle.ViewCommandeTitle_totalPaye}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_qteMale}"/>
+                        <h:outputText value="#{commandeController.selected.qteMale}" title="#{bundle.ViewCommandeTitle_qteMale}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_qteFemale}"/>
+                        <h:outputText value="#{commandeController.selected.qteFemale}" title="#{bundle.ViewCommandeTitle_qteFemale}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_id}"/>
+                        <h:outputText value="#{commandeController.selected.id}" title="#{bundle.ViewCommandeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_etatPaiement}"/>
+                        <h:outputText value="#{commandeController.selected.etatPaiement}" title="#{bundle.ViewCommandeTitle_etatPaiement}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_livraisons}"/>
+                        <h:outputText value="#{commandeController.selected.livraisons}" title="#{bundle.ViewCommandeTitle_livraisons}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_dateCommande}"/>
+                        <h:outputText value="#{commandeController.selected.dateCommande}" title="#{bundle.ViewCommandeTitle_dateCommande}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_montantTotal}"/>
+                        <h:outputText value="#{commandeController.selected.montantTotal}" title="#{bundle.ViewCommandeTitle_montantTotal}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_fournisseur}"/>
+                        <h:outputText value="#{commandeController.selected.fournisseur}" title="#{bundle.ViewCommandeTitle_fournisseur}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_etatReception}"/>
+                        <h:outputText value="#{commandeController.selected.etatReception}" title="#{bundle.ViewCommandeTitle_etatReception}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_ferme}"/>
+                        <h:outputText value="#{commandeController.selected.ferme}" title="#{bundle.ViewCommandeTitle_ferme}"/>
+                        <h:outputText value="#{bundle.ViewCommandeLabel_responsable}"/>
+                        <h:outputText value="#{commandeController.selected.responsable}" title="#{bundle.ViewCommandeTitle_responsable}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CommandeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

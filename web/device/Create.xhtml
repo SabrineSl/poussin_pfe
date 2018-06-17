@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DeviceCreateDlg" widgetVar="DeviceCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDeviceTitle}">
+            <h:form id="DeviceCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{deviceController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDeviceLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{deviceController.selected.id}" title="#{bundle.CreateDeviceTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateDeviceLabel_deviceCategorie}" for="deviceCategorie" />
+                        <p:inputText id="deviceCategorie" value="#{deviceController.selected.deviceCategorie}" title="#{bundle.CreateDeviceTitle_deviceCategorie}" />
+                        <p:outputLabel value="#{bundle.CreateDeviceLabel_browser}" for="browser" />
+                        <p:inputText id="browser" value="#{deviceController.selected.browser}" title="#{bundle.CreateDeviceTitle_browser}" />
+                        <p:outputLabel value="#{bundle.CreateDeviceLabel_operatingSystem}" for="operatingSystem" />
+                        <p:inputText id="operatingSystem" value="#{deviceController.selected.operatingSystem}" title="#{bundle.CreateDeviceTitle_operatingSystem}" />
+                        <p:outputLabel value="#{bundle.CreateDeviceLabel_macAdress}" for="macAdress" />
+                        <p:inputText id="macAdress" value="#{deviceController.selected.macAdress}" title="#{bundle.CreateDeviceTitle_macAdress}" />
+                        <p:outputLabel value="#{bundle.CreateDeviceLabel_ipAdress}" for="ipAdress" />
+                        <p:inputText id="ipAdress" value="#{deviceController.selected.ipAdress}" title="#{bundle.CreateDeviceTitle_ipAdress}" />
+                        <p:outputLabel value="#{bundle.CreateDeviceLabel_utilisateur}" for="utilisateur" />
+                        <p:selectOneMenu id="utilisateur" value="#{deviceController.selected.utilisateur}" >
+                            <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
+                                           var="utilisateurItem"
+                                           itemValue="#{utilisateurItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{deviceController.create}" value="#{bundle.Save}" update="display,:DeviceListForm:datalist,:growl" oncomplete="handleSubmit(args,'DeviceCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DeviceCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

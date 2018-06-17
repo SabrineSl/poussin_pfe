@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MedicamentsParGenderEditDlg" widgetVar="MedicamentsParGenderEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMedicamentsParGenderTitle}">
+            <h:form id="MedicamentsParGenderEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medicamentsParGenderController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMedicamentsParGenderLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{medicamentsParGenderController.selected.id}" title="#{bundle.EditMedicamentsParGenderTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditMedicamentsParGenderLabel_situationInitiale}" for="situationInitiale" />
+                        <p:inputText id="situationInitiale" value="#{medicamentsParGenderController.selected.situationInitiale}" title="#{bundle.EditMedicamentsParGenderTitle_situationInitiale}" />
+                        <p:outputLabel value="#{bundle.EditMedicamentsParGenderLabel_situationFinale}" for="situationFinale" />
+                        <p:inputText id="situationFinale" value="#{medicamentsParGenderController.selected.situationFinale}" title="#{bundle.EditMedicamentsParGenderTitle_situationFinale}" />
+                        <p:outputLabel value="#{bundle.EditMedicamentsParGenderLabel_entree}" for="entree" />
+                        <p:inputText id="entree" value="#{medicamentsParGenderController.selected.entree}" title="#{bundle.EditMedicamentsParGenderTitle_entree}" />
+                        <p:outputLabel value="#{bundle.EditMedicamentsParGenderLabel_consomation}" for="consomation" />
+                        <p:inputText id="consomation" value="#{medicamentsParGenderController.selected.consomation}" title="#{bundle.EditMedicamentsParGenderTitle_consomation}" />
+                        <p:outputLabel value="#{bundle.EditMedicamentsParGenderLabel_typeMedicament}" for="typeMedicament" />
+                        <p:selectOneMenu id="typeMedicament" value="#{medicamentsParGenderController.selected.typeMedicament}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeMedicamentController.itemsAvailableSelectOne}"
+                                           var="typeMedicamentItem"
+                                           itemValue="#{typeMedicamentItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{medicamentsParGenderController.update}" value="#{bundle.Save}" update="display,:MedicamentsParGenderListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MedicamentsParGenderEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MedicamentsParGenderEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

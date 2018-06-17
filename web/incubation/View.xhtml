@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="IncubationViewDlg" widgetVar="IncubationViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewIncubationTitle}">
+            <h:form id="IncubationViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{incubationController.selected != null}">
+                        <h:outputText value="#{bundle.ViewIncubationLabel_id}"/>
+                        <h:outputText value="#{incubationController.selected.id}" title="#{bundle.ViewIncubationTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewIncubationLabel_dateIncubation}"/>
+                        <h:outputText value="#{incubationController.selected.dateIncubation}" title="#{bundle.ViewIncubationTitle_dateIncubation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewIncubationLabel_numeroSemaine}"/>
+                        <h:outputText value="#{incubationController.selected.numeroSemaine}" title="#{bundle.ViewIncubationTitle_numeroSemaine}"/>
+                        <h:outputText value="#{bundle.ViewIncubationLabel_annee}"/>
+                        <h:outputText value="#{incubationController.selected.annee}" title="#{bundle.ViewIncubationTitle_annee}"/>
+                        <h:outputText value="#{bundle.ViewIncubationLabel_qteIncube}"/>
+                        <h:outputText value="#{incubationController.selected.qteIncube}" title="#{bundle.ViewIncubationTitle_qteIncube}"/>
+                        <h:outputText value="#{bundle.ViewIncubationLabel_trieOeuf}"/>
+                        <h:outputText value="#{incubationController.selected.trieOeuf}" title="#{bundle.ViewIncubationTitle_trieOeuf}"/>
+                        <h:outputText value="#{bundle.ViewIncubationLabel_couvoir}"/>
+                        <h:outputText value="#{incubationController.selected.couvoir}" title="#{bundle.ViewIncubationTitle_couvoir}"/>
+                        <h:outputText value="#{bundle.ViewIncubationLabel_eclosion}"/>
+                        <h:outputText value="#{incubationController.selected.eclosion}" title="#{bundle.ViewIncubationTitle_eclosion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="IncubationViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

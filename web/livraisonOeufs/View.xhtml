@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LivraisonOeufsViewDlg" widgetVar="LivraisonOeufsViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLivraisonOeufsTitle}">
+            <h:form id="LivraisonOeufsViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{livraisonOeufsController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLivraisonOeufsLabel_id}"/>
+                        <h:outputText value="#{livraisonOeufsController.selected.id}" title="#{bundle.ViewLivraisonOeufsTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewLivraisonOeufsLabel_dateLivraison}"/>
+                        <h:outputText value="#{livraisonOeufsController.selected.dateLivraison}" title="#{bundle.ViewLivraisonOeufsTitle_dateLivraison}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewLivraisonOeufsLabel_total}"/>
+                        <h:outputText value="#{livraisonOeufsController.selected.total}" title="#{bundle.ViewLivraisonOeufsTitle_total}"/>
+                        <h:outputText value="#{bundle.ViewLivraisonOeufsLabel_responsable}"/>
+                        <h:outputText value="#{livraisonOeufsController.selected.responsable}" title="#{bundle.ViewLivraisonOeufsTitle_responsable}"/>
+                        <h:outputText value="#{bundle.ViewLivraisonOeufsLabel_demandeOeufs}"/>
+                        <h:outputText value="#{livraisonOeufsController.selected.demandeOeufs}" title="#{bundle.ViewLivraisonOeufsTitle_demandeOeufs}"/>
+                        <h:outputText value="#{bundle.ViewLivraisonOeufsLabel_qte}"/>
+                        <h:outputText value="#{livraisonOeufsController.selected.qte}" title="#{bundle.ViewLivraisonOeufsTitle_qte}"/>
+                        <h:outputText value="#{bundle.ViewLivraisonOeufsLabel_client}"/>
+                        <h:outputText value="#{livraisonOeufsController.selected.client}" title="#{bundle.ViewLivraisonOeufsTitle_client}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LivraisonOeufsViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="IncubationCreateDlg" widgetVar="IncubationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateIncubationTitle}">
+            <h:form id="IncubationCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{incubationController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateIncubationLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{incubationController.selected.id}" title="#{bundle.CreateIncubationTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateIncubationLabel_dateIncubation}" for="dateIncubation" />
+                        <p:calendar id="dateIncubation" pattern="MM/dd/yyyy" value="#{incubationController.selected.dateIncubation}" title="#{bundle.EditIncubationTitle_dateIncubation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateIncubationLabel_numeroSemaine}" for="numeroSemaine" />
+                        <p:inputText id="numeroSemaine" value="#{incubationController.selected.numeroSemaine}" title="#{bundle.CreateIncubationTitle_numeroSemaine}" />
+                        <p:outputLabel value="#{bundle.CreateIncubationLabel_annee}" for="annee" />
+                        <p:inputText id="annee" value="#{incubationController.selected.annee}" title="#{bundle.CreateIncubationTitle_annee}" />
+                        <p:outputLabel value="#{bundle.CreateIncubationLabel_qteIncube}" for="qteIncube" />
+                        <p:inputText id="qteIncube" value="#{incubationController.selected.qteIncube}" title="#{bundle.CreateIncubationTitle_qteIncube}" />
+                        <p:outputLabel value="#{bundle.CreateIncubationLabel_trieOeuf}" for="trieOeuf" />
+                        <p:selectOneMenu id="trieOeuf" value="#{incubationController.selected.trieOeuf}" >
+                            <f:selectItems value="#{trieOeufController.itemsAvailableSelectOne}"
+                                           var="trieOeufItem"
+                                           itemValue="#{trieOeufItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateIncubationLabel_couvoir}" for="couvoir" />
+                        <p:selectOneMenu id="couvoir" value="#{incubationController.selected.couvoir}" >
+                            <f:selectItems value="#{couvoirController.itemsAvailableSelectOne}"
+                                           var="couvoirItem"
+                                           itemValue="#{couvoirItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateIncubationLabel_eclosion}" for="eclosion" />
+                        <p:selectOneMenu id="eclosion" value="#{incubationController.selected.eclosion}" >
+                            <f:selectItems value="#{eclosionController.itemsAvailableSelectOne}"
+                                           var="eclosionItem"
+                                           itemValue="#{eclosionItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{incubationController.create}" value="#{bundle.Save}" update="display,:IncubationListForm:datalist,:growl" oncomplete="handleSubmit(args,'IncubationCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="IncubationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

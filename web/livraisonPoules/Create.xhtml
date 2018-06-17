@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LivraisonPoulesCreateDlg" widgetVar="LivraisonPoulesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLivraisonPoulesTitle}">
+            <h:form id="LivraisonPoulesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{livraisonPoulesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLivraisonPoulesLabel_qteMale}" for="qteMale" />
+                        <p:inputText id="qteMale" value="#{livraisonPoulesController.selected.qteMale}" title="#{bundle.CreateLivraisonPoulesTitle_qteMale}" />
+                        <p:outputLabel value="#{bundle.CreateLivraisonPoulesLabel_qteFemale}" for="qteFemale" />
+                        <p:inputText id="qteFemale" value="#{livraisonPoulesController.selected.qteFemale}" title="#{bundle.CreateLivraisonPoulesTitle_qteFemale}" />
+                        <p:outputLabel value="#{bundle.CreateLivraisonPoulesLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{livraisonPoulesController.selected.id}" title="#{bundle.CreateLivraisonPoulesTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateLivraisonPoulesLabel_dateLivraison}" for="dateLivraison" />
+                        <p:calendar id="dateLivraison" pattern="MM/dd/yyyy HH:mm:ss" value="#{livraisonPoulesController.selected.dateLivraison}" title="#{bundle.EditLivraisonPoulesTitle_dateLivraison}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateLivraisonPoulesLabel_demandePoules}" for="demandePoules" />
+                        <p:selectOneMenu id="demandePoules" value="#{livraisonPoulesController.selected.demandePoules}" >
+                            <f:selectItems value="#{demandePoulesController.itemsAvailableSelectOne}"
+                                           var="demandePoulesItem"
+                                           itemValue="#{demandePoulesItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLivraisonPoulesLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{livraisonPoulesController.selected.total}" title="#{bundle.CreateLivraisonPoulesTitle_total}" />
+                        <p:outputLabel value="#{bundle.CreateLivraisonPoulesLabel_responsable}" for="responsable" />
+                        <p:selectOneMenu id="responsable" value="#{livraisonPoulesController.selected.responsable}" >
+                            <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
+                                           var="responsableItem"
+                                           itemValue="#{responsableItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLivraisonPoulesLabel_client}" for="client" />
+                        <p:selectOneMenu id="client" value="#{livraisonPoulesController.selected.client}" >
+                            <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
+                                           var="clientItem"
+                                           itemValue="#{clientItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{livraisonPoulesController.create}" value="#{bundle.Save}" update="display,:LivraisonPoulesListForm:datalist,:growl" oncomplete="handleSubmit(args,'LivraisonPoulesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LivraisonPoulesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

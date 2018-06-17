@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <h:form id="chartForm">
+            <p:outputLabel value="Client:" for="client" />
+            <h:selectOneMenu id="client" value="#{demandePoulesController.client}" >
+                <f:selectItems value="#{clientController.itemsAvailableSelectOne}" 
+
+                               var="clientItem"
+                               itemValue="#{clientItem}" itemLabel="#{clientItem.nom}"
+                               />
+            </h:selectOneMenu>
+
+
+            <p:outputLabel value="Annee:" for="annee" />
+            <h:selectOneMenu  id="annee" value="#{demandePoulesController.annee}" title="Annee">
+                <f:selectItem itemLabel="--select--" itemValue="#{null}" />
+                <f:selectItem itemLabel="2018" itemValue="2018" />
+                <f:selectItem itemLabel="2017" itemValue="2017" />
+                <f:selectItem itemLabel="2016" itemValue="2016" />
+            </h:selectOneMenu>
+
+
+
+
+
+
+            <p:commandButton actionListener="#{demandePoulesController.findByCriteriaForChart2()}" value="demmander" update="tab"></p:commandButton>
+
+
+
+
+            <h:form id="chart">
+                <p:chart type="bar" model="#{demandePoulesController.model}" id="charts" style="height:300px"></p:chart> 
+            </h:form>
+        </h:form>
+
+
+
+
+
+        <h1><h:outputText value="List"/></h1>
+        <p:dataTable value="#{demandePoulesController.demandes}" var="item" id="tab">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="TotalNonEncaisse"/>
+                </f:facet>
+                <h:outputText value="#{item.totalNonEncaisse}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="QteTotal"/>
+                </f:facet>
+                <h:outputText value="#{item.qteTotal}"/>
+            </p:column>
+      
+         
+           
+       
+          
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="reference"/>
+                </f:facet>
+                <h:outputText value="#{item.reference}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="EtatPaiement"/>
+                </f:facet>
+                <h:outputText value="#{item.etatPaiement}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="DateDemande"/>
+                </f:facet>
+                <h:outputText value="#{item.dateDemande}">
+                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="MontantTotal"/>
+                </f:facet>
+                <h:outputText value="#{item.montantTotal}"/>
+            </p:column>
+           
+        </p:dataTable>
+
+    </h:body>
+</html>
+

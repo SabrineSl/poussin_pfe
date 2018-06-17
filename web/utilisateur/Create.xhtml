@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurCreateDlg" widgetVar="UtilisateurCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUtilisateurTitle}">
+            <h:form id="UtilisateurCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{utilisateurController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{utilisateurController.selected.id}" title="#{bundle.CreateUtilisateurTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{utilisateurController.selected.login}" title="#{bundle.CreateUtilisateurTitle_login}" />
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{utilisateurController.selected.password}" title="#{bundle.CreateUtilisateurTitle_password}" />
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{utilisateurController.selected.nom}" title="#{bundle.CreateUtilisateurTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{utilisateurController.selected.prenom}" title="#{bundle.CreateUtilisateurTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{utilisateurController.selected.email}" title="#{bundle.CreateUtilisateurTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_tel}" for="tel" />
+                        <p:inputText id="tel" value="#{utilisateurController.selected.tel}" title="#{bundle.CreateUtilisateurTitle_tel}" />
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_nbrEssaye}" for="nbrEssaye" />
+                        <p:inputText id="nbrEssaye" value="#{utilisateurController.selected.nbrEssaye}" title="#{bundle.CreateUtilisateurTitle_nbrEssaye}" />
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_ferme}" for="ferme" />
+                        <p:selectOneMenu id="ferme" value="#{utilisateurController.selected.ferme}" >
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeItem"
+                                           itemValue="#{fermeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateUtilisateurLabel_question}" for="question" />
+                        <p:selectOneMenu id="question" value="#{utilisateurController.selected.question}" >
+                            <f:selectItems value="#{questionController.itemsAvailableSelectOne}"
+                                           var="questionItem"
+                                           itemValue="#{questionItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{utilisateurController.create}" value="#{bundle.Save}" update="display,:UtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(args,'UtilisateurCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UtilisateurCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

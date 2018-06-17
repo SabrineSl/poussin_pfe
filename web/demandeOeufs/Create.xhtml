@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DemandeOeufsCreateDlg" widgetVar="DemandeOeufsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDemandeOeufsTitle}">
+            <h:form id="DemandeOeufsCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{demandeOeufsController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{demandeOeufsController.selected.id}" title="#{bundle.CreateDemandeOeufsTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_estimationOeuf}" for="estimationOeuf" />
+                        <p:selectOneMenu id="estimationOeuf" value="#{demandeOeufsController.selected.estimationOeuf}" >
+                            <f:selectItems value="#{estimationOeufController.itemsAvailableSelectOne}"
+                                           var="estimationOeufItem"
+                                           itemValue="#{estimationOeufItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_qte}" for="qte" />
+                        <p:inputText id="qte" value="#{demandeOeufsController.selected.qte}" title="#{bundle.CreateDemandeOeufsTitle_qte}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_qteLivree}" for="qteLivree" />
+                        <p:inputText id="qteLivree" value="#{demandeOeufsController.selected.qteLivree}" title="#{bundle.CreateDemandeOeufsTitle_qteLivree}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_etatLivraison}" for="etatLivraison" />
+                        <p:inputText id="etatLivraison" value="#{demandeOeufsController.selected.etatLivraison}" title="#{bundle.CreateDemandeOeufsTitle_etatLivraison}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_montantTotal}" for="montantTotal" />
+                        <p:inputText id="montantTotal" value="#{demandeOeufsController.selected.montantTotal}" title="#{bundle.CreateDemandeOeufsTitle_montantTotal}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_totalPaye}" for="totalPaye" />
+                        <p:inputText id="totalPaye" value="#{demandeOeufsController.selected.totalPaye}" title="#{bundle.CreateDemandeOeufsTitle_totalPaye}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_dateDemande}" for="dateDemande" />
+                        <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandeOeufsController.selected.dateDemande}" title="#{bundle.EditDemandeOeufsTitle_dateDemande}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_etatPaiement}" for="etatPaiement" />
+                        <p:inputText id="etatPaiement" value="#{demandeOeufsController.selected.etatPaiement}" title="#{bundle.CreateDemandeOeufsTitle_etatPaiement}" />
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_responsable}" for="responsable" />
+                        <p:selectOneMenu id="responsable" value="#{demandeOeufsController.selected.responsable}" >
+                            <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
+                                           var="responsableItem"
+                                           itemValue="#{responsableItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDemandeOeufsLabel_client}" for="client" />
+                        <p:selectOneMenu id="client" value="#{demandeOeufsController.selected.client}" >
+                            <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
+                                           var="clientItem"
+                                           itemValue="#{clientItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{demandeOeufsController.create}" value="#{bundle.Save}" update="display,:DemandeOeufsListForm:datalist,:growl" oncomplete="handleSubmit(args,'DemandeOeufsCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DemandeOeufsCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

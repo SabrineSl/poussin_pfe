@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SuivisPoussinParGenderCreateDlg" widgetVar="SuivisPoussinParGenderCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSuivisPoussinParGenderTitle}">
+            <h:form id="SuivisPoussinParGenderCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{suivisPoussinParGenderController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSuivisPoussinParGenderLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{suivisPoussinParGenderController.selected.id}" title="#{bundle.CreateSuivisPoussinParGenderTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisPoussinParGenderLabel_debutJour}" for="debutJour" />
+                        <p:inputText id="debutJour" value="#{suivisPoussinParGenderController.selected.debutJour}" title="#{bundle.CreateSuivisPoussinParGenderTitle_debutJour}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisPoussinParGenderLabel_finJour}" for="finJour" />
+                        <p:inputText id="finJour" value="#{suivisPoussinParGenderController.selected.finJour}" title="#{bundle.CreateSuivisPoussinParGenderTitle_finJour}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisPoussinParGenderLabel_mortalite}" for="mortalite" />
+                        <p:inputText id="mortalite" value="#{suivisPoussinParGenderController.selected.mortalite}" title="#{bundle.CreateSuivisPoussinParGenderTitle_mortalite}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisPoussinParGenderLabel_entree}" for="entree" />
+                        <p:inputText id="entree" value="#{suivisPoussinParGenderController.selected.entree}" title="#{bundle.CreateSuivisPoussinParGenderTitle_entree}" />
+                        <p:outputLabel value="#{bundle.CreateSuivisPoussinParGenderLabel_vente}" for="vente" />
+                        <p:inputText id="vente" value="#{suivisPoussinParGenderController.selected.vente}" title="#{bundle.CreateSuivisPoussinParGenderTitle_vente}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{suivisPoussinParGenderController.create}" value="#{bundle.Save}" update="display,:SuivisPoussinParGenderListForm:datalist,:growl" oncomplete="handleSubmit(args,'SuivisPoussinParGenderCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SuivisPoussinParGenderCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

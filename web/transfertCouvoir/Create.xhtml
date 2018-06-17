@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TransfertCouvoirCreateDlg" widgetVar="TransfertCouvoirCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTransfertCouvoirTitle}">
+            <h:form id="TransfertCouvoirCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{transfertCouvoirController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTransfertCouvoirLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{transfertCouvoirController.selected.id}" title="#{bundle.CreateTransfertCouvoirTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateTransfertCouvoirLabel_dateTransfere}" for="dateTransfere" />
+                        <p:calendar id="dateTransfere" pattern="MM/dd/yyyy" value="#{transfertCouvoirController.selected.dateTransfere}" title="#{bundle.EditTransfertCouvoirTitle_dateTransfere}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTransfertCouvoirLabel_qteCovoireTransfere}" for="qteCovoireTransfere" />
+                        <p:inputText id="qteCovoireTransfere" value="#{transfertCouvoirController.selected.qteCovoireTransfere}" title="#{bundle.CreateTransfertCouvoirTitle_qteCovoireTransfere}" />
+                        <p:outputLabel value="#{bundle.CreateTransfertCouvoirLabel_couvoir}" for="couvoir" />
+                        <p:selectOneMenu id="couvoir" value="#{transfertCouvoirController.selected.couvoir}" >
+                            <f:selectItems value="#{couvoirController.itemsAvailableSelectOne}"
+                                           var="couvoirItem"
+                                           itemValue="#{couvoirItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTransfertCouvoirLabel_fermeSource}" for="fermeSource" />
+                        <p:selectOneMenu id="fermeSource" value="#{transfertCouvoirController.selected.fermeSource}" >
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeSourceItem"
+                                           itemValue="#{fermeSourceItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTransfertCouvoirLabel_fermeDestination}" for="fermeDestination" />
+                        <p:selectOneMenu id="fermeDestination" value="#{transfertCouvoirController.selected.fermeDestination}" >
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeDestinationItem"
+                                           itemValue="#{fermeDestinationItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{transfertCouvoirController.create}" value="#{bundle.Save}" update="display,:TransfertCouvoirListForm:datalist,:growl" oncomplete="handleSubmit(args,'TransfertCouvoirCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TransfertCouvoirCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

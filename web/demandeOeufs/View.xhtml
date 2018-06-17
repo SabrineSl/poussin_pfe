@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DemandeOeufsViewDlg" widgetVar="DemandeOeufsViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDemandeOeufsTitle}">
+            <h:form id="DemandeOeufsViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{demandeOeufsController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_id}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.id}" title="#{bundle.ViewDemandeOeufsTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_estimationOeuf}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.estimationOeuf}" title="#{bundle.ViewDemandeOeufsTitle_estimationOeuf}"/>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_qte}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.qte}" title="#{bundle.ViewDemandeOeufsTitle_qte}"/>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_qteLivree}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.qteLivree}" title="#{bundle.ViewDemandeOeufsTitle_qteLivree}"/>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_etatLivraison}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.etatLivraison}" title="#{bundle.ViewDemandeOeufsTitle_etatLivraison}"/>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_montantTotal}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.montantTotal}" title="#{bundle.ViewDemandeOeufsTitle_montantTotal}"/>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_totalPaye}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.totalPaye}" title="#{bundle.ViewDemandeOeufsTitle_totalPaye}"/>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_dateDemande}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.dateDemande}" title="#{bundle.ViewDemandeOeufsTitle_dateDemande}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_etatPaiement}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.etatPaiement}" title="#{bundle.ViewDemandeOeufsTitle_etatPaiement}"/>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_responsable}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.responsable}" title="#{bundle.ViewDemandeOeufsTitle_responsable}"/>
+                        <h:outputText value="#{bundle.ViewDemandeOeufsLabel_client}"/>
+                        <h:outputText value="#{demandeOeufsController.selected.client}" title="#{bundle.ViewDemandeOeufsTitle_client}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DemandeOeufsViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

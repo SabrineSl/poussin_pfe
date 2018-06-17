@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TransfertMedicamentsEditDlg" widgetVar="TransfertMedicamentsEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTransfertMedicamentsTitle}">
+            <h:form id="TransfertMedicamentsEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{transfertMedicamentsController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTransfertMedicamentsLabel_typeMedicament}" for="typeMedicament" />
+                        <p:selectOneMenu id="typeMedicament" value="#{transfertMedicamentsController.selected.typeMedicament}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeMedicamentController.itemsAvailableSelectOne}"
+                                           var="typeMedicamentItem"
+                                           itemValue="#{typeMedicamentItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTransfertMedicamentsLabel_dateTransfere}" for="dateTransfere" />
+                        <p:calendar id="dateTransfere" pattern="MM/dd/yyyy" value="#{transfertMedicamentsController.selected.dateTransfere}" title="#{bundle.EditTransfertMedicamentsTitle_dateTransfere}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTransfertMedicamentsLabel_qteTransferee}" for="qteTransferee" />
+                        <p:inputText id="qteTransferee" value="#{transfertMedicamentsController.selected.qteTransferee}" title="#{bundle.EditTransfertMedicamentsTitle_qteTransferee}" />
+                        <p:outputLabel value="#{bundle.EditTransfertMedicamentsLabel_fermeSource}" for="fermeSource" />
+                        <p:selectOneMenu id="fermeSource" value="#{transfertMedicamentsController.selected.fermeSource}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeSourceItem"
+                                           itemValue="#{fermeSourceItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTransfertMedicamentsLabel_fermeDestination}" for="fermeDestination" />
+                        <p:selectOneMenu id="fermeDestination" value="#{transfertMedicamentsController.selected.fermeDestination}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeDestinationItem"
+                                           itemValue="#{fermeDestinationItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTransfertMedicamentsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{transfertMedicamentsController.selected.id}" title="#{bundle.EditTransfertMedicamentsTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{transfertMedicamentsController.update}" value="#{bundle.Save}" update="display,:TransfertMedicamentsListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TransfertMedicamentsEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TransfertMedicamentsEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

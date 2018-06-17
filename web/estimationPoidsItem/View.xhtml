@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstimationPoidsItemViewDlg" widgetVar="EstimationPoidsItemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEstimationPoidsItemTitle}">
+            <h:form id="EstimationPoidsItemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estimationPoidsItemController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEstimationPoidsItemLabel_mesure}"/>
+                        <h:outputText value="#{estimationPoidsItemController.selected.mesure}" title="#{bundle.ViewEstimationPoidsItemTitle_mesure}"/>
+                        <h:outputText value="#{bundle.ViewEstimationPoidsItemLabel_numeroSemaine}"/>
+                        <h:outputText value="#{estimationPoidsItemController.selected.numeroSemaine}" title="#{bundle.ViewEstimationPoidsItemTitle_numeroSemaine}"/>
+                        <h:outputText value="#{bundle.ViewEstimationPoidsItemLabel_id}"/>
+                        <h:outputText value="#{estimationPoidsItemController.selected.id}" title="#{bundle.ViewEstimationPoidsItemTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewEstimationPoidsItemLabel_estimationPoids}"/>
+                        <h:outputText value="#{estimationPoidsItemController.selected.estimationPoids}" title="#{bundle.ViewEstimationPoidsItemTitle_estimationPoids}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EstimationPoidsItemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

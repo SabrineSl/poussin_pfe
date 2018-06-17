@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta charset="utf-8" />
+
+        <link rel="icon" sizes="76x76" href="resources/assets/img/chick_1.png"/>
+        <link rel="icon" type="image/png" href="resources/assets/img/chick_1.png"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>
+            E-poussin
+        </title>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"/>
+        <!--<link href="assets2/css/bootstrap.min.css" rel="stylesheet" />-->
+        <!-- CSS Files -->
+        <link href="resources/assets2/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+
+    </h:head>
+
+    <h:body>
+        <div class="wrapper ">
+
+            <div class="sidebar" data-color="yellow">
+                <!--
+                  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+                -->
+
+                <div class="logo">
+
+                    <a href="index1.xhtml" class="simple-text logo-normal"><img src="../resources/assets/img/chick_1.png" style="width:60px;vertical-align: middle;margin: 0px;" alt="EDE logo"/>
+                        E-poussin
+                    </a>
+                </div>
+
+                <div class="sidebar-wrapper">
+
+                    <ul class="nav">
+
+                        <li>
+                            <a href="./suivi.html">
+                                <i class="now-ui-icons ui-1_check " />
+
+                                <p>Declarer un suivi</p>
+                            </a>
+                        </li>
+
+                        <li class="active">
+                            <a href="./detailles.html">
+                                <i class="now-ui-icons ui-1_zoom-bold" />
+
+                                <p>chercher un suivi </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./transfert.html">
+                                <i class="now-ui-icons ui-1_send" />
+
+                                <p>Transfer</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./statistics.html">
+                                <i class="now-ui-icons business_chart-bar-32" />
+
+                                <p>Statistics</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="Paiement.">
+                                <i class="now-ui-icons users_single-02" />
+
+                                <p>Paiement</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./tables.html">
+                                <i class="now-ui-icons design_bullet-list-67" />
+
+                                <p>Table List</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./typography.html">
+                                <i class="now-ui-icons text_caps-small" />
+
+                                <p>Typography</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-panel">
+                <!-- Navbar -->
+
+
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+
+
+                            <li><a href="Demande.xhtml">Demande</a></li>
+                            <li><a href="Paiement.xhtml">Paiement</a></li>
+                            <li><a href="Encaissement.xhtml">Encaissement</a></li>
+                            <li><a href="Livraison.xhtml">Livraison</a></li>
+                            <li><a href="statistics.xhtml">Statistics</a></li>
+                            <li><a href="Search.xhtml">Search</a></li>
+                            <li><a href="Detail.xhtml">Detail</a></li>
+                        </ul>
+                    </div>
+                </nav>          <!-- End Navbar -->
+
+
+                <div class="content" >
+
+                    <div class="row" >
+
+                        <div class="col-md-14 col-md-offset " >
+
+
+                            <div class="card" style="background-color: rgb(251, 248, 252)" >
+
+
+                                <div class="card-header" style="text-align: center;">
+
+                                    <h3 class="title"> Livraison </h3>
+                                </div>
+                                <hr/>
+
+                                <h:form id="form">
+                                    <b:panel id="horizontal" title="Livraison" look="warning"  >
+                                        <h:panelGrid >
+
+                                            <div class="row">
+                                                <div class="col-md-5 col-md-offset-1">
+
+
+                                                    <div class="form-group">
+                                                        <p:outputLabel value="Nom:" for="nom" />
+                                                        <p:inputText class="form-control" id="nom" value="#{clientController.selected.nom}" title="Nom" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-md-offset-1">
+
+
+                                                    <div class="form-group">
+                                                        <p:outputLabel value="Tel:" for="tel" />
+                                                        <p:inputText class="form-control" id="tel" value="#{clientController.selected.tel}" title="Tel" />
+                                                    </div>
+                                                </div>
+                                                 </div>
+                                                <div class="col-md-5 col-md-offset-1">
+
+
+                                                    <div class="form-group">
+                                                        <p:outputLabel value="Email:" for="email" />
+                                                        <p:inputText class="form-control" id="email" value="#{clientController.selected.email}" title="Email" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-md-offset-1">
+
+                                                    <div class="form-group">
+                                                        <p:commandButton class="btn btn-#{$black}" icon="fa fa-plus" actionListener="#{clientController.addView()}" value="ajouter" update=":form:tab"></p:commandButton>
+                                                    </div>
+                                                </div>
+                                           
+
+                                            <p:dataTable class="form-group" value="#{clientController.clientItems}" var="item" id="tab">
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Nom"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.nom}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Tel"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.tel}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Email"/>
+                                                    </f:facet>
+                                                    <h:outputText value="#{item.email}"/>
+                                                </p:column>
+                                                <p:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Action"/>
+                                                    </f:facet>
+                                                    <p:commandButton actionListener="#{clientController}" value="delete" update="tab"></p:commandButton>
+                                                </p:column>
+
+                                            </p:dataTable>
+
+                                            <p:commandButton actionListener="#{clientController.addBd()}" value="confirmer"></p:commandButton>     
+                                        </h:panelGrid>
+                                    </b:panel> 
+                                </h:form>
+
+                                <h:form id="form2">    
+                                    <b:modal id="amodal" title="Livraison :" styleClass="Paiement">
+
+
+
+
+
+
+                                          
+                                          <f:facet name="footer">
+                                                <b:button value="Close" dismiss="modal" />
+                                                <b:button value="Ok" look="primary" dismiss="modal" />
+                                              </f:facet>
+                                    </b:modal>
+
+
+
+
+
+                                </h:form>
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <footer class="footer">
+
+                <div class="container-fluid">
+                    <nav>
+
+                        <ul>
+
+                            <li>
+                                <a href="https://www.creative-tim.com">
+                                    Creative Tim
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="http://presentation.creative-tim.com">
+                                    About Us
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="http://blog.creative-tim.com">
+                                    Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="copyright">
+                        ©
+
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>2018, Designed by
+                        <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+                        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                    </div>
+                </div>
+            </footer>
+
+
+
+            <script src="resources/assets2/js/core/popper.min.js"></script>
+
+            <!--  Google Maps Plugin    -->
+
+
+
+        </div>
+
+    </h:body>
+</html>

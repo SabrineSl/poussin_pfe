@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+
+            <h:form id="form">
+
+
+                <b:panel id="horizontal" title="Demande" style="margin-bottom:20px ;background-color:  lightgrey;">
+                    <h:panelGrid >
+                        <p:panelGrid columns="2">
+
+                            <p:selectOneMenu id="demandePoules" value="#{demandePoulesController.selected}" >
+                                <f:selectItem itemLabel="--SELECT--" ></f:selectItem>
+                                <f:selectItems value="#{demandePoulesController.itemsAvailableSelectOne}"
+                                               var="demandePoulesItem"
+                                               itemValue="#{demandePoulesItem}" itemLabel="#{demandePoulesItem.id}"/>
+                            </p:selectOneMenu>
+
+                            <p:commandButton actionListener="#{demandePoulesController.searchId()}" update="tab"></p:commandButton>
+
+                        </p:panelGrid>
+
+                        <p:dataTable value="#{demandePoulesController.demandes}" var="item" id="tab">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DateDemande"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateDemande}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="QteTotal"/>
+                                </f:facet>
+                                <h:outputText value="#{item.qteTotal}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="TotalPaye"/>
+                                </f:facet>
+                                <h:outputText value="#{item.totalPaye}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="QteMale"/>
+                                </f:facet>
+                                <h:outputText value="#{item.qteMale}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="QteFemale"/>
+                                </f:facet>
+                                <h:outputText value="#{item.qteFemale}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="EtatPaiement"/>
+                                </f:facet>
+                                <h:outputText value="#{item.etatPaiement}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="MontantTotal"/>
+                                </f:facet>
+                                <h:outputText value="#{item.montantTotal}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Detail"/>
+                                </f:facet>
+                                <p:commandButton actionListener="#{demandePoulesController.detail(item)}" update=":form2:tab,:form3:tab2"></p:commandButton>
+                            </p:column>
+
+                        </p:dataTable>
+                    </h:panelGrid>
+                </b:panel>
+
+
+            </h:form>
+
+
+
+            <div class="row">
+
+            <h:form id="form2">
+
+                <b:panel id="horizontal" title="Livraison" style="margin-bottom:20px ;background-color:  lightgrey;">
+                    <h:panelGrid columns="4">
+
+
+                        <p:dataTable value="#{demandePoulesController.livraisons}" var="item" id="tab">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="QteMale"/>
+                                </f:facet>
+                                <h:outputText value="#{item.qteMale}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="QteFemale"/>
+                                </f:facet>
+                                <h:outputText value="#{item.qteFemale}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DateLivraison"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateLivraison}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Total"/>
+                                </f:facet>
+                                <h:outputText value="#{item.total}"/>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </h:panelGrid>
+                </b:panel>
+
+            </h:form>
+
+
+
+            <h:form id="form3">
+                <b:panel id="horizontal" title="Paiement"  style="margin-bottom:20px ; background-color:  lightgrey;">
+                    <h:panelGrid columns="4">
+                        <p:dataTable value="#{demandePoulesController.paiement}" var="item" id="tab2">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Type"/>
+                                </f:facet>
+                                <h:outputText value="#{item.type}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DatePaiement"/>
+                                </f:facet>
+                                <h:outputText value="#{item.datePaiement}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DateEncaissement"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateEncaissement}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Total"/>
+                                </f:facet>
+                                <h:outputText value="#{item.total}"/>
+                            </p:column>
+                        </p:dataTable>
+
+
+                    </h:panelGrid>
+                </b:panel>    
+            </h:form>
+
+
+</div>
+
+        </f:view>
+
+    </h:body>
+</html>
+

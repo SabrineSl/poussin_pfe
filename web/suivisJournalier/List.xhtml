@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSuivisJournalierTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="SuivisJournalierListForm">
+                <p:panel header="#{bundle.ListSuivisJournalierTitle}">
+                    <p:dataTable id="datalist" value="#{suivisJournalierController.items}" var="item"
+                                 selectionMode="single" selection="#{suivisJournalierController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_poids}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.poids}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_dateSuivis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateSuivis}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_semaine}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.semaine}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_numSemaine}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numSemaine}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_annee}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.annee}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_ferme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ferme}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_suivisPoussinFemale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suivisPoussinFemale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_suivisPoussinMale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suivisPoussinMale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_alimentsMale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.alimentsMale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_alimentsFemale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.alimentsFemale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_production}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.production}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_totalConsommationAliments}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalConsommationAliments}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_medicamentsMale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.medicamentsMale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_medicamentsFemale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.medicamentsFemale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuivisJournalierTitle_totalConsommationMedicaments}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalConsommationMedicaments}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{suivisJournalierController.prepareCreate}" update=":SuivisJournalierCreateForm" oncomplete="PF('SuivisJournalierCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SuivisJournalierViewForm" oncomplete="PF('SuivisJournalierViewDialog').show()" disabled="#{empty suivisJournalierController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SuivisJournalierEditForm" oncomplete="PF('SuivisJournalierEditDialog').show()" disabled="#{empty suivisJournalierController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{suivisJournalierController.destroy}" update=":growl,datalist" disabled="#{empty suivisJournalierController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TransfertAlimentsEditDlg" widgetVar="TransfertAlimentsEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTransfertAlimentsTitle}">
+            <h:form id="TransfertAlimentsEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{transfertAlimentsController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTransfertAlimentsLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{transfertAlimentsController.selected.id}" title="#{bundle.EditTransfertAlimentsTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditTransfertAlimentsLabel_dateTransfere}" for="dateTransfere" />
+                        <p:calendar id="dateTransfere" pattern="MM/dd/yyyy" value="#{transfertAlimentsController.selected.dateTransfere}" title="#{bundle.EditTransfertAlimentsTitle_dateTransfere}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTransfertAlimentsLabel_qteTransferee}" for="qteTransferee" />
+                        <p:inputText id="qteTransferee" value="#{transfertAlimentsController.selected.qteTransferee}" title="#{bundle.EditTransfertAlimentsTitle_qteTransferee}" />
+                        <p:outputLabel value="#{bundle.EditTransfertAlimentsLabel_fermeSource}" for="fermeSource" />
+                        <p:selectOneMenu id="fermeSource" value="#{transfertAlimentsController.selected.fermeSource}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeSourceItem"
+                                           itemValue="#{fermeSourceItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTransfertAlimentsLabel_fermeDestination}" for="fermeDestination" />
+                        <p:selectOneMenu id="fermeDestination" value="#{transfertAlimentsController.selected.fermeDestination}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeDestinationItem"
+                                           itemValue="#{fermeDestinationItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTransfertAlimentsLabel_typeAliment}" for="typeAliment" />
+                        <p:selectOneMenu id="typeAliment" value="#{transfertAlimentsController.selected.typeAliment}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeAlimentController.itemsAvailableSelectOne}"
+                                           var="typeAlimentItem"
+                                           itemValue="#{typeAlimentItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{transfertAlimentsController.update}" value="#{bundle.Save}" update="display,:TransfertAlimentsListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TransfertAlimentsEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TransfertAlimentsEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

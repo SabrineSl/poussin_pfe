@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+
+
+        <f:view>
+            <h:form>  
+
+
+
+
+                <h1><h:outputText value="List"/></h1>
+                <p:dataTable value="#{clientController.items}" var="item">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nom"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nom}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Tel"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tel}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Email"/>
+                        </f:facet>
+                        <h:outputText value="#{item.email}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
+                </p:dataTable>
+
+
+
+
+                <p:commandButton action="#{clientController.delai()}" value="afficher" update="tab"></p:commandButton>
+
+            
+
+
+
+                <h1><h:outputText value="List"/></h1>
+                <p:dataTable value="#{clientController.cliens}" var="item" id="tab">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nom"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nom}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Tel"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tel}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Email"/>
+                        </f:facet>
+                        <h:outputText value="#{item.email}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <p:commandButton action="#{demandePoulesController.delaiAdmin(item)}" value="cc" update=":form1:tab22" ></p:commandButton>
+                    </p:column>
+                </p:dataTable>
+                
+                </h:form>
+                <h:form id="form1">
+
+                    <h1><h:outputText value="List"/></h1>
+                    <p:dataTable value="#{demandePoulesController.delais}" var="item" id="tab22">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="QteTotal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qteTotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="QteMaleLivree"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qteMaleLivree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="QteFemaleLivree"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qteFemaleLivree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="TotalPaye"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalPaye}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="QteMale"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qteMale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="QteFemale"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qteFemale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="EtatPaiement"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etatPaiement}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DateDemande"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDemande}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="MontantTotal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montantTotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Client"/>
+                            </f:facet>
+                            <h:outputText value="#{item.client}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Responsable"/>
+                            </f:facet>
+                            <h:outputText value="#{item.responsable}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="EtatLivraison"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etatLivraison}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+                
+              
+                
+                
+                
+                
+                
+                
+                
+
+        </f:view>
+
+    </h:body>
+</html>
+

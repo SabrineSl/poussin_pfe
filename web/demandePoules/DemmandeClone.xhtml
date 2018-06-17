@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+         <f:view>
+
+
+            <h:form id="form1">
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                 
+                    <p:outputLabel value="QteMale:" for="qteMale" />
+                    <p:inputText id="qteMale" value="#{demandePoulesController.selected.qteMale}" title="QteMale" />
+                    <p:outputLabel value="QteFemale:" for="qteFemale" />
+                    <p:inputText id="qteFemale" value="#{demandePoulesController.selected.qteFemale}" title="QteFemale" />
+                   
+                   <p:outputLabel value="#{bundle.CreateDemandePoulesLabel_dateDemande}" for="dateDemande" />
+                        <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandePoulesController.selected.dateDemande}" title="#{bundle.EditDemandePoulesTitle_dateDemande}"  showOn="button"/>
+                   
+                    <p:outputLabel value="Client:" for="client" />
+                    <p:selectOneMenu id="client" value="#{demandePoulesController.selected.client}" >
+                     <f:selectItems value="#{clientController.itemsAvailableSelectOne}" 
+
+                                       var="clientItem"
+                                       itemValue="#{clientItem}" itemLabel="#{clientItem.nom}"
+                                       />
+                    </p:selectOneMenu>
+                    
+                    
+                    <p:commandButton actionListener="#{demandePoulesController.demmander()}" onclick="$('.modalPseudoClass').modal()"  value="demmander" update=":form1:form2:tab"></p:commandButton>
+                </p:panelGrid>
+
+               
+                        
+                        
+                     <h:form id="form2">    
+                        <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
+                            
+                            
+                            
+                            
+                    <h1><h:outputText value="List"/></h1>
+                    <b:dataTable value="#{demandePoulesController.items}" var="item" id="tab">
+                        <b:dataTableColumn>
+                            <f:facet name="header">
+                                <h:outputText value="QteTotal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qteTotal}"/>
+                        </b:dataTableColumn>
+                      
+                       
+                       
+                     
+                     
+                 
+                        <b:dataTableColumn>
+                            <f:facet name="header">
+                                <h:outputText value="DateDemande"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDemande}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn>
+                            <f:facet name="header">
+                                <h:outputText value="MontantTotal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montantTotal}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn>
+                            <f:facet name="header">
+                                <h:outputText value="recu"/>
+                            </f:facet>
+                             <b:commandButton actionListener="#{demandePoulesController.generate(item) }" value="recu" update="tab" ajax="false"></b:commandButton>
+                        </b:dataTableColumn>
+                      
+                      
+                    
+                    </b:dataTable>
+          
+
+                       
+                      
+  
+  <f:facet name="footer">
+    <b:button value="Close" dismiss="modal" />
+    <b:button value="Ok" look="primary" dismiss="modal" />
+  </f:facet>
+</b:modal>
+
+                        
+                        
+                        
+                        
+                        
+                        
+                       </h:form>
+                       </h:form>
+
+             
+             
+                       
+     
+        </f:view>
+    </h:body>
+</html>
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SystemInfoEditDlg" widgetVar="SystemInfoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSystemInfoTitle}">
+            <h:form id="SystemInfoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{systemInfoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSystemInfoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{systemInfoController.selected.id}" title="#{bundle.EditSystemInfoTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditSystemInfoLabel_adminSys}" for="adminSys" />
+                        <p:selectOneMenu id="adminSys" value="#{systemInfoController.selected.adminSys}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
+                                           var="adminSysItem"
+                                           itemValue="#{adminSysItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditSystemInfoLabel_boiteEmailSys}" for="boiteEmailSys" />
+                        <p:inputText id="boiteEmailSys" value="#{systemInfoController.selected.boiteEmailSys}" title="#{bundle.EditSystemInfoTitle_boiteEmailSys}" />
+                        <p:outputLabel value="#{bundle.EditSystemInfoLabel_passwordEmailSys}" for="passwordEmailSys" />
+                        <p:inputText id="passwordEmailSys" value="#{systemInfoController.selected.passwordEmailSys}" title="#{bundle.EditSystemInfoTitle_passwordEmailSys}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{systemInfoController.update}" value="#{bundle.Save}" update="display,:SystemInfoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SystemInfoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SystemInfoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

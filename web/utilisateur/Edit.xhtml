@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UtilisateurEditDlg" widgetVar="UtilisateurEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditUtilisateurTitle}">
+            <h:form id="UtilisateurEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{utilisateurController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{utilisateurController.selected.id}" title="#{bundle.EditUtilisateurTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{utilisateurController.selected.login}" title="#{bundle.EditUtilisateurTitle_login}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{utilisateurController.selected.password}" title="#{bundle.EditUtilisateurTitle_password}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{utilisateurController.selected.nom}" title="#{bundle.EditUtilisateurTitle_nom}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{utilisateurController.selected.prenom}" title="#{bundle.EditUtilisateurTitle_prenom}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{utilisateurController.selected.email}" title="#{bundle.EditUtilisateurTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_tel}" for="tel" />
+                        <p:inputText id="tel" value="#{utilisateurController.selected.tel}" title="#{bundle.EditUtilisateurTitle_tel}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_nbrEssaye}" for="nbrEssaye" />
+                        <p:inputText id="nbrEssaye" value="#{utilisateurController.selected.nbrEssaye}" title="#{bundle.EditUtilisateurTitle_nbrEssaye}" />
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_ferme}" for="ferme" />
+                        <p:selectOneMenu id="ferme" value="#{utilisateurController.selected.ferme}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeItem"
+                                           itemValue="#{fermeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditUtilisateurLabel_question}" for="question" />
+                        <p:selectOneMenu id="question" value="#{utilisateurController.selected.question}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{questionController.itemsAvailableSelectOne}"
+                                           var="questionItem"
+                                           itemValue="#{questionItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{utilisateurController.update}" value="#{bundle.Save}" update="display,:UtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UtilisateurEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UtilisateurEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

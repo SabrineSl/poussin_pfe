@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoriqueConnexionUserEditDlg" widgetVar="HistoriqueConnexionUserEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditHistoriqueConnexionUserTitle}">
+            <h:form id="HistoriqueConnexionUserEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historiqueConnexionUserController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditHistoriqueConnexionUserLabel_dateAction}" for="dateAction" />
+                        <p:calendar id="dateAction" pattern="MM/dd/yyyy HH:mm:ss" value="#{historiqueConnexionUserController.selected.dateAction}" title="#{bundle.EditHistoriqueConnexionUserTitle_dateAction}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditHistoriqueConnexionUserLabel_connexion}" for="connexion" />
+                        <p:selectBooleanCheckbox id="connexion" value="#{historiqueConnexionUserController.selected.connexion}" />
+                        <p:outputLabel value="#{bundle.EditHistoriqueConnexionUserLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{historiqueConnexionUserController.selected.id}" title="#{bundle.EditHistoriqueConnexionUserTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditHistoriqueConnexionUserLabel_utilisateur}" for="utilisateur" />
+                        <p:selectOneMenu id="utilisateur" value="#{historiqueConnexionUserController.selected.utilisateur}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
+                                           var="utilisateurItem"
+                                           itemValue="#{utilisateurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditHistoriqueConnexionUserLabel_device}" for="device" />
+                        <p:selectOneMenu id="device" value="#{historiqueConnexionUserController.selected.device}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{deviceController.itemsAvailableSelectOne}"
+                                           var="deviceItem"
+                                           itemValue="#{deviceItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{historiqueConnexionUserController.update}" value="#{bundle.Save}" update="display,:HistoriqueConnexionUserListForm:datalist,:growl" oncomplete="handleSubmit(args, 'HistoriqueConnexionUserEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="HistoriqueConnexionUserEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

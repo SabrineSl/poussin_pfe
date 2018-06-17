@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form id="form">
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Nom:" for="nom" />
+                    <p:inputText id="nom" value="#{clientController.selected.nom}" title="Nom" />
+                    <p:outputLabel value="Tel:" for="tel" />
+                    <p:inputText id="tel" value="#{clientController.selected.tel}" title="Tel" />
+                    <p:outputLabel value="Email:" for="email" />
+                    <p:inputText id="email" value="#{clientController.selected.email}" title="Email" />
+                    <p:commandButton actionListener="#{clientController.addView()}" value="ajouter" update=":form:tab"></p:commandButton>
+                </p:panelGrid>
+                    <h1><h:outputText value="List"/></h1>
+                    <p:dataTable value="#{clientController.clientItems}" var="item" id="tab">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nom"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Tel"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tel}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Email"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Action"/>
+                            </f:facet>
+                            <p:commandButton actionListener="#{clientController.remove(item)}" value="delete" update="tab"></p:commandButton>
+                        </p:column>
+                      
+                    </p:dataTable>
+                    
+                    <p:commandButton actionListener="#{clientController.addBd()}" value="confirmer"></p:commandButton>
+                </h:form>
+
+                
+        </f:view>
+
+        
+    </h:body>
+</html>
+

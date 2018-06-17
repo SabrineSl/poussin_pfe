@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReceptionEditDlg" widgetVar="ReceptionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditReceptionTitle}">
+            <h:form id="ReceptionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{receptionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditReceptionLabel_qteMale}" for="qteMale" />
+                        <p:inputText id="qteMale" value="#{receptionController.selected.qteMale}" title="#{bundle.EditReceptionTitle_qteMale}" />
+                        <p:outputLabel value="#{bundle.EditReceptionLabel_qteFemale}" for="qteFemale" />
+                        <p:inputText id="qteFemale" value="#{receptionController.selected.qteFemale}" title="#{bundle.EditReceptionTitle_qteFemale}" />
+                        <p:outputLabel value="#{bundle.EditReceptionLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{receptionController.selected.id}" title="#{bundle.EditReceptionTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditReceptionLabel_dateReception}" for="dateReception" />
+                        <p:calendar id="dateReception" pattern="MM/dd/yyyy HH:mm:ss" value="#{receptionController.selected.dateReception}" title="#{bundle.EditReceptionTitle_dateReception}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditReceptionLabel_commande}" for="commande" />
+                        <p:selectOneMenu id="commande" value="#{receptionController.selected.commande}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commandeController.itemsAvailableSelectOne}"
+                                           var="commandeItem"
+                                           itemValue="#{commandeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditReceptionLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{receptionController.selected.total}" title="#{bundle.EditReceptionTitle_total}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{receptionController.update}" value="#{bundle.Save}" update="display,:ReceptionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ReceptionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReceptionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

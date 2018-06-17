@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DemandePoulesViewDlg" widgetVar="DemandePoulesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDemandePoulesTitle}">
+            <h:form id="DemandePoulesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{demandePoulesController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_qteTotal}"/>
+                        <h:outputText value="#{demandePoulesController.selected.qteTotal}" title="#{bundle.ViewDemandePoulesTitle_qteTotal}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_qteMaleLivree}"/>
+                        <h:outputText value="#{demandePoulesController.selected.qteMaleLivree}" title="#{bundle.ViewDemandePoulesTitle_qteMaleLivree}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_qteFemaleLivree}"/>
+                        <h:outputText value="#{demandePoulesController.selected.qteFemaleLivree}" title="#{bundle.ViewDemandePoulesTitle_qteFemaleLivree}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_totalPaye}"/>
+                        <h:outputText value="#{demandePoulesController.selected.totalPaye}" title="#{bundle.ViewDemandePoulesTitle_totalPaye}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_qteMale}"/>
+                        <h:outputText value="#{demandePoulesController.selected.qteMale}" title="#{bundle.ViewDemandePoulesTitle_qteMale}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_qteFemale}"/>
+                        <h:outputText value="#{demandePoulesController.selected.qteFemale}" title="#{bundle.ViewDemandePoulesTitle_qteFemale}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_id}"/>
+                        <h:outputText value="#{demandePoulesController.selected.id}" title="#{bundle.ViewDemandePoulesTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_etatPaiement}"/>
+                        <h:outputText value="#{demandePoulesController.selected.etatPaiement}" title="#{bundle.ViewDemandePoulesTitle_etatPaiement}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_dateDemande}"/>
+                        <h:outputText value="#{demandePoulesController.selected.dateDemande}" title="#{bundle.ViewDemandePoulesTitle_dateDemande}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_montantTotal}"/>
+                        <h:outputText value="#{demandePoulesController.selected.montantTotal}" title="#{bundle.ViewDemandePoulesTitle_montantTotal}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_client}"/>
+                        <h:outputText value="#{demandePoulesController.selected.client}" title="#{bundle.ViewDemandePoulesTitle_client}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_responsable}"/>
+                        <h:outputText value="#{demandePoulesController.selected.responsable}" title="#{bundle.ViewDemandePoulesTitle_responsable}"/>
+                        <h:outputText value="#{bundle.ViewDemandePoulesLabel_etatLivraison}"/>
+                        <h:outputText value="#{demandePoulesController.selected.etatLivraison}" title="#{bundle.ViewDemandePoulesTitle_etatLivraison}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DemandePoulesViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form >
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="7">
+
+                   <p:outputLabel value="dateMin" for="dateMin" />
+                   <p:calendar id="dateMin" pattern="MM/dd/yyyy" value="#{demandePoulesController.dateMin}" title="#{bundle.EditDemandePoulesTitle_dateMin}"  showOn="button"/>
+                   <p:outputLabel value="dateMax" for="dateMax" />
+                   <p:calendar id="dateMax" pattern="MM/dd/yyyy" value="#{demandePoulesController.dateMax}" title="#{bundle.EditDemandePoulesTitle_dateMax}"  showOn="button"/>
+                    <p:outputLabel value="Client:" for="client" />
+                    <p:selectOneMenu id="client" value="#{demandePoulesController.client}" >
+                        <f:selectItems value="#{clientController.itemsAvailableSelectOne}" 
+
+                                       var="clientItem"
+                                       itemValue="#{clientItem}" itemLabel="#{clientItem.nom}"
+                                       />
+                    </p:selectOneMenu>
+                    <p:outputLabel value="EtatPaiement:" for="etatPaiement" />
+                      <p:selectOneMenu id="etatPaiement" value="#{demandePoulesController.selected.etatPaiement}" >
+                                                                        <f:selectItem itemLabel="payer" itemValue="1" />
+                                                                        <f:selectItem itemLabel="non payer" itemValue="2" />
+                                                                        <f:selectItem itemLabel="en cours de paiement" itemValue="3"/>
+                                                                    </p:selectOneMenu>
+                    <p:commandButton action="#{demandePoulesController.search()}" update="tab" value="Afficher"></p:commandButton>
+
+                </p:panelGrid>
+
+
+
+                    <h1><h:outputText value="List"/></h1>
+                    <p:dataTable value="#{demandePoulesController.demandes}" var="item" id="tab">
+                     
+                        
+                       
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="TotalPaye"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalPaye}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="QteMale"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qteMale}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="QteFemale"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qteFemale}"/>
+                        </p:column>
+                           <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="QteTotal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qteTotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="EtatPaiement"/>
+                            </f:facet>
+                            <h:outputText value="#{item.etatPaiement}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DateDemande"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDemande}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="MontantTotal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montantTotal}"/>
+                        </p:column>
+                     
+                  
+                     
+                    </p:dataTable>
+                </h:form>
+            
+
+        </f:view>
+
+    </h:body>
+</html>
+

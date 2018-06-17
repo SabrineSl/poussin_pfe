@@ -1,0 +1,640 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta charset="utf-8" />
+
+        <link rel="icon" sizes="76x76" href="resources/assets/img/psss.png"/>
+        <link rel="icon" type="image/png" href="resources/assets/img/psss.png"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>
+            E-poussin
+        </title>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"/>
+        <!--<link href="assets2/css/bootstrap.min.css" rel="stylesheet" />-->
+        <!-- CSS Files -->
+        <link href="resources/assets2/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+
+    </h:head>
+
+    <body>
+        <div class="wrapper ">
+
+            <div class="sidebar" data-color="green">
+                <!--
+                  Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+                -->
+
+                <div class="logo">
+
+                    <a href="index1.xhtml" class="simple-text logo-normal"><img src="../resources/assets/img/psss.png" style="width:60px;vertical-align: middle;margin: 0px;" alt="EDE logo"/>
+                        E-poussin
+                    </a>
+                </div>
+
+                <div class="sidebar-wrapper">
+
+                    <ul class="nav">
+
+                        <li>
+                            <a href="./suivi.html">
+                                <i class="now-ui-icons ui-1_check " />
+
+                                <p>Declarer un suivi</p>
+                            </a>
+                        </li>
+
+                        <li class="active">
+                            <a href="./detailles.html">
+                                <i class="now-ui-icons ui-1_zoom-bold" />
+
+                                <p>chercher un suivi </p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./transfert.html">
+                                <i class="now-ui-icons ui-1_send" />
+
+                                <p>Transfer</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./statistics.html">
+                                <i class="now-ui-icons business_chart-bar-32" />
+
+                                <p>Statistics</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="Paiement.">
+                                <i class="now-ui-icons users_single-02" />
+
+                                <p>Paiement</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./tables.html">
+                                <i class="now-ui-icons design_bullet-list-67" />
+
+                                <p>Table List</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="./typography.html">
+                                <i class="now-ui-icons text_caps-small" />
+
+                                <p>Typography</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-panel">
+                <!-- Navbar -->
+
+                <h:outputText />
+
+                <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top">
+
+                    <div class="container-fluid">
+
+                        <div class="navbar-wrapper">
+
+                            <div class="navbar-toggle">
+                                <button type="button" class="navbar-toggler">
+                                    <span class="navbar-toggler-bar bar1" />
+                                    <span class="navbar-toggler-bar bar2" />
+                                    <span class="navbar-toggler-bar bar3" />
+                                </button>
+                            </div>
+                            <a class="navbar-brand" href="#pablo">User Profile</a>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-bar navbar-kebab" />
+                            <span class="navbar-toggler-bar navbar-kebab" />
+                            <span class="navbar-toggler-bar navbar-kebab" />
+                        </button>
+
+                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                            <b:form>
+
+
+                            </b:form>
+
+
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+
+                <div class="panel-header panel-header-sm">
+
+                </div>
+
+                <div class="content" >
+
+                    <div class="row" >
+
+                        <div class="col-md-10 col-md-offset-1 " >
+
+
+                            <div class="card" style="background-color: rgb(251, 248, 252)" >
+
+
+                                <div class="card-header" style="text-align: center;">
+
+                                    <h3 class="title">Paiement</h3>
+                                </div>
+                                <hr/>
+
+                                <div class="card-body">
+                                    <b:form>
+
+                                        <b:carousel id="wizard" styleClass="wizardPseudoClass"
+                                                    style="padding-top:10px"
+                                                    startAnimation="false"
+                                                    showIndicators="false"
+                                                    wrap="false">
+                                               <b:carouselItem style=" height:230px">
+                                                <b:panel title="Suivi journalier" look="success" style="text-align: center; height:230px">
+                                                    <div class="row" style="margin-top: 3%">
+
+
+
+   
+               
+                                       
+
+
+                                                    
+                                                                
+                                                                   
+                 
+                                                     
+                                                    </div>
+
+                                                </b:panel>  
+                                            </b:carouselItem>
+                                            <b:carouselItem style=" height:230px">
+                                                <b:panel title="Suivi journalier" look="success" style="text-align: center; height:230px">
+                                                    <div class="row" style="margin-top: 3%">
+
+
+
+
+
+
+                                                        <div class="col-md-4 col-md-offset-2 ">
+                                                            <label>Demmande :</label>
+                                                            <h:selectOneMenu  class="form-control"  value="#{paiementDemandePoulesController.selected.demandePoules}" >
+                                                                <f:selectItem itemLabel="--select--" ></f:selectItem>
+                                                                <f:selectItems value="#{demandePoulesController.itemsAvailableSelectOne}"
+                                                                               var="demandePoulesItem"
+                                                                               itemValue="#{demandePoulesItem}" itemLabel="#{demandePoulesItem.id}"/>
+                                                            </h:selectOneMenu>
+
+
+                                                        </div>
+
+
+                                                        <div class="col-md-4 col-md-offset-1 ">
+
+
+                                                            <div >
+                                                                <label>Montant Payé :</label>
+                                                                <b:inputText  class="form-group" required="true" placeholder="Total"  value="#{paiementDemandePoulesController.total}"/>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </b:panel>  
+                                            </b:carouselItem>
+                                            <b:carouselItem style="height:230px">
+                                                <b:panel title="Ferme" look="success" style="text-align: center;height:230px">
+                                                    <div class="row" style="margin-top: 5%">
+                                                        <div class="col-md-6 col-md-offset-3 ">
+
+                                                            <label>Type de Paiement :</label>
+
+
+
+                                                            <h:selectOneMenu  class="form-control" id="type" value="#{paiementDemandePoulesController.type}" title="Type" >
+                                                                <f:selectItem itemValue="#{null}" itemLabel="--SELECT--" ></f:selectItem>
+                                                                <f:selectItem itemLabel="espece" itemValue="1" />
+                                                                <f:selectItem itemLabel="chèque" itemValue="2" />
+                                                            </h:selectOneMenu>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" >
+                                                        <div class="col-md-4 col-md-offset-4 ">
+
+                                                            <div class="form-group">
+                                                                <b:commandButton action="#{paiementDemandePoulesController.paiementDemande()}" class="btn success form-control" value="ENREGISTRER" ></b:commandButton>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </b:panel>
+
+                                            </b:carouselItem>
+         
+
+                                            <b:carouselControl direction="right" >
+                                                <b:button  value="precedent"
+                                                           onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+                                                           look="success" />
+                                            </b:carouselControl>
+                                            <b:carouselControl direction="left">
+                                                <b:button value="suivant" style="position:absolute;right:0px"
+                                                          onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+                                                          look="success" />
+                                            </b:carouselControl>
+                                        </b:carousel>
+                                    </b:form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-top: 100px;">
+
+                            <h:form id="listFormId">
+
+                                <b:dataTable  value="#{paiementController.items}" var="item" id="tab12" process="none"  excel="true"
+                                              csv="true"
+                                              pdf="true"
+                                              columnVisibility="true"
+                                              copy="true"
+                                              print="true"> 
+
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Type"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.type}"/>
+                                    </b:column>
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="DatePaiement"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.datePaiement}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </b:column>
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="DateEncaissement"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateEncaissement}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </b:column>
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Id"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.id}"/>
+                                    </b:column>
+                                    <b:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Total"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.total}"/>
+                                    </b:column>
+                                    <b:dataTableColumn>
+                                        <f:facet name="header">
+                                            <label>plus de detaille</label>
+                                        </f:facet>
+                                        <p:commandButton value="plus de detaille" actionListener="#{suivisJournalierController.detaille(item)}" update=":listFormId:dataListAlimentF" class="btn " onclick="PF('dlg2').show();"  />
+                                    </b:dataTableColumn>
+                                </b:dataTable>
+
+
+
+
+                                <p:dialog  widgetVar="dlg2" modal="true" height="500"  dynamic="true" style="background-color: #f2e6ff;" >
+                                    <f:view> 
+                                        <h3 style="text-align: center">Effectif</h3>
+
+
+
+                                        <h6>Male</h6>
+                                        <b:dataTable value="#{suivisJournalierController.selected.suivisPoussinMale}" var="item">
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="DebutJour"/>
+                                                </f:facet>
+                                                #{item.debutJour}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="FinJour"/>
+                                                </f:facet>
+                                                #{item.debutJour}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Mortalite"/>
+                                                </f:facet>
+                                                #{item.mortalite}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Entrée"/>
+                                                </f:facet>
+                                                #{item.entree}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Vendu"/>
+                                                </f:facet>
+                                                #{item.vente}
+                                            </b:dataTableColumn>
+                                        </b:dataTable>
+
+                                        <h6>Female</h6>
+                                        <b:dataTable value="#{suivisJournalierController.selected.suivisPoussinFemale}" var="item">
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="DebutJour"/>
+                                                </f:facet>
+                                                #{item.debutJour}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="FinJour"/>
+                                                </f:facet>
+                                                #{item.debutJour}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Mortalite"/>
+                                                </f:facet>
+                                                #{item.mortalite}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Entrée"/>
+                                                </f:facet>
+                                                #{item.entree}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Vendu"/>
+                                                </f:facet>
+                                                #{item.vente}
+                                            </b:dataTableColumn>
+
+
+                                        </b:dataTable>
+
+                                        <h3 style="text-align: center">Aliment</h3>
+                                        <h6>female</h6>
+                                        <b:dataTable id="dataListAlimentF" value="#{suivisJournalierController.selected.alimentsFemale}" var="item" searching='false' paginated='false'  >
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>SituationInitiale</label>
+                                                </f:facet>
+                                                #{item.situationInitiale}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>SituationFinale</label>
+                                                </f:facet>
+                                                #{item.situationFinale}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>entrée</label>
+                                                </f:facet>
+                                                #{item.entree}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>consomation</label>
+                                                </f:facet>
+                                                #{item.consomation}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>type Aliment</label>
+                                                </f:facet>
+                                                #{item.typeAliment.nom}
+                                            </b:dataTableColumn>
+
+                                        </b:dataTable>
+                                        <h6>Male</h6>
+                                        <b:dataTable id="dataListAlimentM" value="#{suivisJournalierController.selected.alimentsMale}" var="item" searching='false' paginated='false'  >
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>SituationInitiale</label>
+                                                </f:facet>
+                                                #{item.situationInitiale}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>SituationFinale</label>
+                                                </f:facet>
+                                                #{item.situationFinale}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>entrée</label>
+                                                </f:facet>
+                                                #{item.entree}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>consomation</label>
+                                                </f:facet>
+                                                #{item.consomation}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <label>type Aliment</label>
+                                                </f:facet>
+                                                #{item.typeAliment.nom}
+                                            </b:dataTableColumn>
+
+                                        </b:dataTable>
+
+                                        <h3 style="text-align: center">Medicament</h3>
+
+                                        <h6>Male</h6>
+
+
+                                        <b:dataTable value="#{suivisJournalierController.selected.medicamentsMale}" var="item">
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="SituationInitiale"/>
+                                                </f:facet>
+                                                #{item.situationInitiale}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="SituationFinale"/>
+                                                </f:facet>
+                                                #{item.situationFinale}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Entrée"/>
+                                                </f:facet>
+                                                #{item.entree}
+                                            </b:dataTableColumn>
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Consomation"/>
+                                                </f:facet>
+                                                #{item.consomation}
+                                            </b:dataTableColumn>
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="TypeMedicament"/>
+                                                </f:facet>
+                                                #{item.typeMedicament.nom}
+                                            </b:dataTableColumn>
+
+
+                                        </b:dataTable>
+
+                                        <h6>Female</h6>
+
+
+                                        <b:dataTable value="#{suivisJournalierController.selected.medicamentsFemale}" var="item">
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="SituationInitiale"/>
+                                                </f:facet>
+                                                #{item.situationInitiale}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="SituationFinale"/>
+                                                </f:facet>
+                                                #{item.situationFinale}
+                                            </b:dataTableColumn>
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Entrée"/>
+                                                </f:facet>
+                                                #{item.entree}
+                                            </b:dataTableColumn>
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Consomation"/>
+                                                </f:facet>
+                                                #{item.consomation}
+                                            </b:dataTableColumn>
+
+                                            <b:dataTableColumn>
+                                                <f:facet name="header">
+                                                    <h:outputText value="TypeMedicament"/>
+                                                </f:facet>
+                                                #{item.typeMedicament.nom}
+                                            </b:dataTableColumn>
+
+
+                                        </b:dataTable>
+
+
+
+                                    </f:view>
+
+                                </p:dialog> 
+
+
+
+
+
+                            </h:form>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <footer class="footer">
+
+                <div class="container-fluid">
+                    <nav>
+
+                        <ul>
+
+                            <li>
+                                <a href="https://www.creative-tim.com">
+                                    Creative Tim
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="http://presentation.creative-tim.com">
+                                    About Us
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="http://blog.creative-tim.com">
+                                    Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="copyright">
+                        ©
+
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>2018, Designed by
+                        <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+                        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                    </div>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </body>
+</html>

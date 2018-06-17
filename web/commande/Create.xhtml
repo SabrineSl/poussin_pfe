@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CommandeCreateDlg" widgetVar="CommandeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCommandeTitle}">
+            <h:form id="CommandeCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{commandeController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_estimationPoids}" for="estimationPoids" />
+                        <p:selectOneMenu id="estimationPoids" value="#{commandeController.selected.estimationPoids}" >
+                            <f:selectItems value="#{estimationPoidsController.itemsAvailableSelectOne}"
+                                           var="estimationPoidsItem"
+                                           itemValue="#{estimationPoidsItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_qteTotal}" for="qteTotal" />
+                        <p:inputText id="qteTotal" value="#{commandeController.selected.qteTotal}" title="#{bundle.CreateCommandeTitle_qteTotal}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_qteMaleReception}" for="qteMaleReception" />
+                        <p:inputText id="qteMaleReception" value="#{commandeController.selected.qteMaleReception}" title="#{bundle.CreateCommandeTitle_qteMaleReception}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_qteFemaleReception}" for="qteFemaleReception" />
+                        <p:inputText id="qteFemaleReception" value="#{commandeController.selected.qteFemaleReception}" title="#{bundle.CreateCommandeTitle_qteFemaleReception}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_totalPaye}" for="totalPaye" />
+                        <p:inputText id="totalPaye" value="#{commandeController.selected.totalPaye}" title="#{bundle.CreateCommandeTitle_totalPaye}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_qteMale}" for="qteMale" />
+                        <p:inputText id="qteMale" value="#{commandeController.selected.qteMale}" title="#{bundle.CreateCommandeTitle_qteMale}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_qteFemale}" for="qteFemale" />
+                        <p:inputText id="qteFemale" value="#{commandeController.selected.qteFemale}" title="#{bundle.CreateCommandeTitle_qteFemale}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{commandeController.selected.id}" title="#{bundle.CreateCommandeTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_etatPaiement}" for="etatPaiement" />
+                        <p:inputText id="etatPaiement" value="#{commandeController.selected.etatPaiement}" title="#{bundle.CreateCommandeTitle_etatPaiement}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_livraisons}" for="livraisons" />
+                        <p:inputText id="livraisons" value="#{commandeController.selected.livraisons}" title="#{bundle.CreateCommandeTitle_livraisons}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_dateCommande}" for="dateCommande" />
+                        <p:calendar id="dateCommande" pattern="MM/dd/yyyy" value="#{commandeController.selected.dateCommande}" title="#{bundle.EditCommandeTitle_dateCommande}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_montantTotal}" for="montantTotal" />
+                        <p:inputText id="montantTotal" value="#{commandeController.selected.montantTotal}" title="#{bundle.CreateCommandeTitle_montantTotal}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_fournisseur}" for="fournisseur" />
+                        <p:selectOneMenu id="fournisseur" value="#{commandeController.selected.fournisseur}" >
+                            <f:selectItems value="#{fournisseurController.itemsAvailableSelectOne}"
+                                           var="fournisseurItem"
+                                           itemValue="#{fournisseurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_etatReception}" for="etatReception" />
+                        <p:inputText id="etatReception" value="#{commandeController.selected.etatReception}" title="#{bundle.CreateCommandeTitle_etatReception}" />
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_ferme}" for="ferme" />
+                        <p:selectOneMenu id="ferme" value="#{commandeController.selected.ferme}" >
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeItem"
+                                           itemValue="#{fermeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCommandeLabel_responsable}" for="responsable" />
+                        <p:selectOneMenu id="responsable" value="#{commandeController.selected.responsable}" >
+                            <f:selectItems value="#{utilisateurController.itemsAvailableSelectOne}"
+                                           var="responsableItem"
+                                           itemValue="#{responsableItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{commandeController.create}" value="#{bundle.Save}" update="display,:CommandeListForm:datalist,:growl" oncomplete="handleSubmit(args,'CommandeCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CommandeCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form id="form1">
+                <h1><h:outputText value="List"/></h1>
+                <p:dataTable value="#{demandePoulesController.items}" var="item" id="tab">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="QteTotal"/>
+                        </f:facet>
+                        <h:outputText value="#{item.qteTotal}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="QteMaleLivree"/>
+                        </f:facet>
+                        <h:outputText value="#{item.qteMaleLivree}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="QteFemaleLivree"/>
+                        </f:facet>
+                        <h:outputText value="#{item.qteFemaleLivree}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="TotalPaye"/>
+                        </f:facet>
+                        <h:outputText value="#{item.totalPaye}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="QteMale"/>
+                        </f:facet>
+                        <h:outputText value="#{item.qteMale}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="QteFemale"/>
+                        </f:facet>
+                        <h:outputText value="#{item.qteFemale}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="EtatPaiement"/>
+                        </f:facet>
+                        <h:outputText value="#{item.etatPaiement}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="DateDemande"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateDemande}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="MontantTotal"/>
+                        </f:facet>
+                        <h:outputText value="#{item.montantTotal}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="EtatLivraison"/>
+                        </f:facet>
+                        <h:outputText value="#{item.etatLivraison}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="EtatLivraison"/>
+                        </f:facet>
+                        <p:commandButton  onclick="$('.modalPseudoClass').modal()" update=":form1:form2:form3"></p:commandButton>
+                    </p:column>
+                </p:dataTable>
+
+
+
+                <h:form id="form2">                 
+
+
+                    <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass">
+
+
+
+                        <h:form id="form3">    
+
+
+
+                            <h1><h:outputText value="Create/Edit"/></h1>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="QteMale:" for="qteMale" />
+                                <p:inputText id="qteMale" value="#{livraisonPoulesController.selected.qteMale}" title="QteMale" />
+                                <p:outputLabel value="QteFemale:" for="qteFemale" />
+                                <p:inputText id="qteFemale" value="#{livraisonPoulesController.selected.qteFemale}" title="QteFemale" />
+
+                                <p:outputLabel value="DateLivraison:" for="dateLivraison" />
+                                <p:inputText id="dateLivraison" value="#{livraisonPoulesController.selected.dateLivraison}" title="DateLivraison" >
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </p:inputText>
+                                <p:outputLabel value="DemandePoules:" for="demandePoules" />
+                                <h:selectOneMenu id="demandePoules" value="#{paiementDemandePoulesController.selected.demandePoules}" >
+                                    <f:selectItem itemLabel="--SELECT--" ></f:selectItem>
+                                    <f:selectItems value="#{demandePoulesController.itemsAvailableSelectOne}"
+                                                   var="demandePoulesItem"
+                                                   itemValue="#{demandePoulesItem}" itemLabel="#{demandePoulesItem.id}"/>
+                                </h:selectOneMenu>
+
+
+                                <p:commandButton actionListener="#{livraisonPoulesController.livraison()}" ></p:commandButton>
+
+
+                            </p:panelGrid>
+
+
+                        </h:form>
+
+
+                          
+                          <f:facet name="footer">
+                                <b:button value="Close" dismiss="modal" />
+                                <b:button value="Ok" look="primary" dismiss="modal" />
+                              </f:facet>
+
+                    </b:modal>
+                </h:form>
+
+
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

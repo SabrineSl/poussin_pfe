@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoriqueConnexionUserViewDlg" widgetVar="HistoriqueConnexionUserViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewHistoriqueConnexionUserTitle}">
+            <h:form id="HistoriqueConnexionUserViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historiqueConnexionUserController.selected != null}">
+                        <h:outputText value="#{bundle.ViewHistoriqueConnexionUserLabel_dateAction}"/>
+                        <h:outputText value="#{historiqueConnexionUserController.selected.dateAction}" title="#{bundle.ViewHistoriqueConnexionUserTitle_dateAction}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewHistoriqueConnexionUserLabel_connexion}"/>
+                        <p:selectBooleanCheckbox value="#{historiqueConnexionUserController.selected.connexion}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewHistoriqueConnexionUserLabel_id}"/>
+                        <h:outputText value="#{historiqueConnexionUserController.selected.id}" title="#{bundle.ViewHistoriqueConnexionUserTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewHistoriqueConnexionUserLabel_utilisateur}"/>
+                        <h:outputText value="#{historiqueConnexionUserController.selected.utilisateur}" title="#{bundle.ViewHistoriqueConnexionUserTitle_utilisateur}"/>
+                        <h:outputText value="#{bundle.ViewHistoriqueConnexionUserLabel_device}"/>
+                        <h:outputText value="#{historiqueConnexionUserController.selected.device}" title="#{bundle.ViewHistoriqueConnexionUserTitle_device}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="HistoriqueConnexionUserViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

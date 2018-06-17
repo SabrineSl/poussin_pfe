@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TransfertMedicamentsViewDlg" widgetVar="TransfertMedicamentsViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTransfertMedicamentsTitle}">
+            <h:form id="TransfertMedicamentsViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{transfertMedicamentsController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTransfertMedicamentsLabel_typeMedicament}"/>
+                        <h:outputText value="#{transfertMedicamentsController.selected.typeMedicament}" title="#{bundle.ViewTransfertMedicamentsTitle_typeMedicament}"/>
+                        <h:outputText value="#{bundle.ViewTransfertMedicamentsLabel_dateTransfere}"/>
+                        <h:outputText value="#{transfertMedicamentsController.selected.dateTransfere}" title="#{bundle.ViewTransfertMedicamentsTitle_dateTransfere}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTransfertMedicamentsLabel_qteTransferee}"/>
+                        <h:outputText value="#{transfertMedicamentsController.selected.qteTransferee}" title="#{bundle.ViewTransfertMedicamentsTitle_qteTransferee}"/>
+                        <h:outputText value="#{bundle.ViewTransfertMedicamentsLabel_fermeSource}"/>
+                        <h:outputText value="#{transfertMedicamentsController.selected.fermeSource}" title="#{bundle.ViewTransfertMedicamentsTitle_fermeSource}"/>
+                        <h:outputText value="#{bundle.ViewTransfertMedicamentsLabel_fermeDestination}"/>
+                        <h:outputText value="#{transfertMedicamentsController.selected.fermeDestination}" title="#{bundle.ViewTransfertMedicamentsTitle_fermeDestination}"/>
+                        <h:outputText value="#{bundle.ViewTransfertMedicamentsLabel_id}"/>
+                        <h:outputText value="#{transfertMedicamentsController.selected.id}" title="#{bundle.ViewTransfertMedicamentsTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TransfertMedicamentsViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
